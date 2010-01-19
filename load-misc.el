@@ -97,3 +97,6 @@
 (add-to-list  'load-path "~/.emacs.d/redo")
 (require 'redo)
 (global-set-key [(control -)] 'redo)
+
+(add-to-list 'load-path "~/.emacs.d/git-emacs")
+(require 'git-emacs)
