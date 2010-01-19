@@ -29,8 +29,7 @@
 (setq rcov-overlay-fg-color "#440000")
 
 
-;; rdebug
-(add-to-list 'load-path "~/.emacs.d/rdebug")
+;; rdebug -- installed from http://rubyforge.org/projects/ruby-debug/ (ruby-debug-extras package)
 (require 'rdebug)
 (setq rdebug-short-key-mode t)
 
