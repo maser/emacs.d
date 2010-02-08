@@ -24,9 +24,10 @@
 
 ;; rcov 
 ;; run rcov with --text-report --save coverage.info options
-(add-to-list 'load-path "~/.emacs.d/rcov")
-(require 'rcov-overlay)
-(setq rcov-overlay-fg-color "#440000")
+(if load-rcov
+    ((add-to-list 'load-path "~/.emacs.d/rcov")
+     (require 'rcov-overlay)
+     (setq rcov-overlay-fg-color "#440000")))
 
 
 ;; rdebug -- installed from http://rubyforge.org/projects/ruby-debug/ (ruby-debug-extras package)
