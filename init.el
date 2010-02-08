@@ -5,6 +5,13 @@
 ;; - cedet-common
 ;; - yaml-mode
 
+
+;; set these variables before loading this file to disable some features
+(if (not (boundp 'load-ecb))
+    (setq load-ecb t))
+(if (not (boundp 'load-cedet))
+    (setq load-cedet t))
+
 (load-file "~/.emacs.d/load-configuration.el")
 (load-file "~/.emacs.d/load-misc.el")
 (load-file "~/.emacs.d/load-ruby-and-rails.el")

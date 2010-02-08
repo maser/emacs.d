@@ -61,9 +61,10 @@
 (require 'flymake)
 
 ;; ecb
-(require 'ecb)
-(setq ecb-tip-of-the-day nil)
-(setq ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
+(if load-ecb
+    ((require 'ecb)
+     (setq ecb-tip-of-the-day nil)
+     (setq ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))))
 
 ;; auto-complete
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
@@ -75,18 +76,22 @@
 (setq ac-dwim 3)         ; Do what i mean
 
 ;; cedet
-; (semantic-load-enable-minimum-features) ; is included in:
-;(semantic-load-enable-code-helpers) ; is included in:
-;(semantic-load-enable-gaudy-code-helpers) ; is included in:
-(semantic-load-enable-excessive-code-helpers)
-(setq semantic-load-turn-everything-on t)
-(require 'semantic-ia)
+(if load-cedet
+    (
+     ;(semantic-load-enable-minimum-features) ; is included in:
+     ;(semantic-load-enable-code-helpers) ; is included in:
+     ;(semantic-load-enable-gaudy-code-helpers) ; is included in:
+     (semantic-load-enable-excessive-code-helpers)
+     (setq semantic-load-turn-everything-on t)
+     (require 'semantic-ia)))
 
 ;; maxframe
 (add-to-list  'load-path "~/.emacs.d/maxframe")
 (require 'maxframe)
 (add-hook 'window-setup-hook 'maximize-frame t)
-(add-hook 'window-setup-hook 'ecb-redraw-layout t)
+
+(if load-ecb
+    (add-hook 'window-setup-hook 'ecb-redraw-layout t))
 
 ;; wrap regions like in textmate
 (require 'parenthesis)
