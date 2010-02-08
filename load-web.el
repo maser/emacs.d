@@ -9,14 +9,15 @@
 
 ;;; nxhml
 (if load-nxhtml
-    ((load "~/.emacs.d/nxhtml/autostart.el")
-     (setq
-      nxhtml-global-minor-mode t
-      mumamo-chunk-coloring 1
-      nxhtml-skip-welcome t
-      indent-region-mode t
-      rng-nxml-auto-validate-flag nil
-      nxml-degraded t)))
+    (progn
+      (load "~/.emacs.d/nxhtml/autostart.el")
+      (setq
+       nxhtml-global-minor-mode t
+       mumamo-chunk-coloring 1
+       nxhtml-skip-welcome t
+       indent-region-mode t
+       rng-nxml-auto-validate-flag nil
+       nxml-degraded t)))
 
 ; can't stand the default colors
 (custom-set-faces

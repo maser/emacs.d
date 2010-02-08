@@ -77,13 +77,14 @@
 
 ;; cedet
 (if load-cedet
-    (
-     ;(semantic-load-enable-minimum-features) ; is included in:
-     ;(semantic-load-enable-code-helpers) ; is included in:
-     ;(semantic-load-enable-gaudy-code-helpers) ; is included in:
-     (semantic-load-enable-excessive-code-helpers)
-     (setq semantic-load-turn-everything-on t)
-     (require 'semantic-ia)))
+    (progn
+      (require 'cedet)
+      ;(semantic-load-enable-minimum-features) ; is included in:
+      ;(semantic-load-enable-code-helpers) ; is included in:
+      ;(semantic-load-enable-gaudy-code-helpers) ; is included in:
+      (semantic-load-enable-excessive-code-helpers)
+      (setq semantic-load-turn-everything-on t)
+      (require 'semantic-ia)))
 
 ;; maxframe
 (add-to-list  'load-path "~/.emacs.d/maxframe")
