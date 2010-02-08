@@ -12,7 +12,6 @@
            (set (make-local-variable 'indent-tabs-mode) 'nil)
            (set (make-local-variable 'tab-width) 2)
            (imenu-add-to-menubar "IMENU")
-           (ruby-block-mode t)
            (local-set-key (kbd "<return>") 'newline-and-indent)
 ))
 
@@ -34,6 +33,3 @@
 ;; rdebug -- installed from http://rubyforge.org/projects/ruby-debug/ (ruby-debug-extras package)
 (require 'rdebug)
 (setq rdebug-short-key-mode t)
-
-(add-to-list 'load-path "~/.emacs.d/ruby-block")
-(require 'ruby-block)
