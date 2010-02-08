@@ -15,10 +15,6 @@
   (define-key c-mode-base-map "\C-m" 'c-context-line-break))
 (add-hook 'c-mode-common-hook 'custom-c-mode-common-hook)
 
-;; color theme
-(require 'color-theme)
-(setq color-theme-is-global t)
-
 ;; anything
 (require 'anything)
 (require 'anything-config)

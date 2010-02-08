@@ -57,6 +57,7 @@
 
 ; colors
 (require 'color-theme)
+(setq color-theme-is-global t)
 (defun set-colors ()
   (color-theme-arjen)
   (set-background-color "#2b2b2b")
