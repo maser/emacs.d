@@ -6,8 +6,11 @@
 (setq inhibit-startup-message t)
 
 ;; Remove toolbar and scrollbar
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
+(if (and (fboundp 'tool-bar-mode)
+	 (fboundp 'scroll-bar-mode))
+    (progn
+      (tool-bar-mode -1)
+      (scroll-bar-mode -1)))
 
 (mouse-wheel-mode t)
 
