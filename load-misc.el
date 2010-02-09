@@ -91,17 +91,9 @@
     (add-hook 'window-setup-hook 'ecb-redraw-layout t))
 
 ;; wrap regions like in textmate
-(require 'parenthesis)
-
-;; and enable it for ruby-mode and rhtml-mode
-(add-hook
- 'ruby-mode-hook
- (lambda()
-   (parenthesis-register-keys "{('\"[" ruby-mode-map)))
-(add-hook
- 'rhtml-mode-hook
- (lambda()
-   (parenthesis-register-keys "{('\"[" rhtml-mode-map)))
+(add-to-list 'load-path "~/.emacs.d/wrap-region")
+(require 'wrap-region)
+(add-hook 'find-file-hook 'wrap-region-mode)
 
 ;; redo
 (add-to-list  'load-path "~/.emacs.d/redo")
