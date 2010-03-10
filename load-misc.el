@@ -1,4 +1,8 @@
 ;; textmate mode
+(setq *textmate-project-roots*
+      '(".git" ".hg"))
+(setq *textmate-gf-exclude*
+      "/\\.|vendor|fixtures|tmp|log|build|\\.xcodeproj|\\.nib|\\.framework|\\.app|\\.pbproj|\\.pbxproj|\\.xcode|\\.xcodeproj|\\.bundle|\\.pyc|gems")
 (add-to-list 'load-path "~/.emacs.d/textmate")
 (require 'textmate)
 (textmate-mode)
