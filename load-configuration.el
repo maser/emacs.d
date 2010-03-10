@@ -75,3 +75,8 @@
  bookmark-default-file "~/.emacs.d/bookmarks"
  bookmark-save-flag 1)
 
+;; windmove
+(global-set-key (kbd "s-n") 'windmove-down)
+(global-set-key (kbd "s-p") 'windmove-up)
+(global-set-key (kbd "s-f") 'windmove-right)
+(global-set-key (kbd "s-b") 'windmove-left)
