@@ -33,3 +33,14 @@
 ;; rdebug -- installed from http://rubyforge.org/projects/ruby-debug/ (ruby-debug-extras package)
 (require 'rdebug)
 (setq rdebug-short-key-mode t)
+
+;; Replace $RSENSE_HOME with the directory where RSense was installed in full path
+;; Example for UNIX-like systems
+;; (setq rsense-home "/home/tomo/opt/rsense-0.2")
+;; or
+;; (setq rsense-home (expand-file-name "~/opt/rsense-0.2"))
+;; Example for Windows
+;; (setq rsense-home "C:\\rsense-0.2")
+(setq rsense-home "/home/maser/.emacs.d/rsense")
+(add-to-list 'load-path (concat rsense-home "/etc"))
+(require 'rsense)
