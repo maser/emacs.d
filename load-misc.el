@@ -3,6 +3,7 @@
       '(".git" ".hg"))
 (setq *textmate-gf-exclude*
       "/\\.|vendor|fixtures|tmp|log|build|\\.xcodeproj|\\.nib|\\.framework|\\.app|\\.pbproj|\\.pbxproj|\\.xcode|\\.xcodeproj|\\.bundle|\\.pyc|gems")
+(setq textmate-find-files-command "cd %s; find -type f")
 (add-to-list 'load-path "~/.emacs.d/textmate")
 (require 'textmate)
 (textmate-mode)
