@@ -13,3 +13,6 @@
 [submodule "rsense"]
 	path = rsense
 	url = http://cx4a.org/repo/rsense.git
+[submodule "auto-complete"]
+	path = auto-complete
+	url = http://cx4a.org/repo/auto-complete.git

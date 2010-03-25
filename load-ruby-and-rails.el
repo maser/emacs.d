@@ -8,11 +8,14 @@
 
 ;; ruby-mode-hook
 (add-hook 'ruby-mode-hook
-         (lambda()
+         (lambda ()
            (set (make-local-variable 'indent-tabs-mode) 'nil)
            (set (make-local-variable 'tab-width) 2)
            (imenu-add-to-menubar "IMENU")
            (local-set-key (kbd "<return>") 'newline-and-indent)
+	   (add-to-list 'ac-sources 'ac-source-rsense-method)
+	   (add-to-list 'ac-sources 'ac-source-rsense-constant)
+	   (local-set-key (kbd "C-c .") 'ac-complete-rsense)
 ))
 
 (load-file "~/.emacs.d/flymake-ruby.el")
