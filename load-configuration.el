@@ -61,14 +61,19 @@
 ; colors
 (require 'color-theme)
 (setq color-theme-is-global t)
-(defun set-colors ()
-  (color-theme-arjen)
-  (set-background-color "#2b2b2b")
-  (set-foreground-color "white")
-  (set-face-background 'modeline "DarkRed")
-  (set-face-foreground 'modeline "white"))
+;; (require 'zenburn)
+;; (color-theme-zenburn)
 
-(set-colors)
+(load "~/.emacs.d/color-theme-twilight.el")
+(color-theme-twilight)
+
+;; (defun set-colors ()
+;;   (color-theme-arjen)
+;;   (set-background-color "#2b2b2b")
+;;   (set-foreground-color "white")
+;;   (set-face-background 'modeline "DarkRed")
+;;   (set-face-foreground 'modeline "white"))
+;; (set-colors)
 
 ;; bookmarks
 (setq
