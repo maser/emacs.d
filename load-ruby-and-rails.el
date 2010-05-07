@@ -35,8 +35,8 @@
 
 
 ;; rdebug -- installed from http://rubyforge.org/projects/ruby-debug/ (ruby-debug-extras package)
-(require 'rdebug)
-(setq rdebug-short-key-mode t)
+;; (require 'rdebug)
+;; (setq rdebug-short-key-mode t)
 
 ;; Replace $RSENSE_HOME with the directory where RSense was installed in full path
 ;; Example for UNIX-like systems
