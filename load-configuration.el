@@ -61,11 +61,11 @@
 ; colors
 (require 'color-theme)
 (setq color-theme-is-global t)
-;; (require 'zenburn)
-;; (color-theme-zenburn)
+(require 'zenburn)
+(color-theme-zenburn)
 
-(load "~/.emacs.d/color-theme-twilight.el")
-(color-theme-twilight)
+;; (load "~/.emacs.d/color-theme-twilight.el")
+;; (color-theme-twilight)
 
 ;; (defun set-colors ()
 ;;   (color-theme-arjen)
