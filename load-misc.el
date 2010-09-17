@@ -132,3 +132,9 @@
     (scroll-bar-mode -1))                   ;; turn off the scrollbar
   (scroll-bar-mode 1)                       ;; otherwise, show a scrollbar...
   (set-scroll-bar-mode 'right))             ;; ... on the right
+
+;; org-mode
+(require 'org-install)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(setq org-log-done t)
+
