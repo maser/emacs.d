@@ -98,9 +98,13 @@
     (add-hook 'window-setup-hook 'ecb-redraw-layout t))
 
 ;; wrap regions like in textmate
-(add-to-list 'load-path "~/.emacs.d/wrap-region")
-(require 'wrap-region)
-(add-hook 'find-file-hook 'wrap-region-mode)
+;; (add-to-list 'load-path "~/.emacs.d/wrap-region")
+;; (require 'wrap-region)
+;; (add-hook 'find-file-hook 'wrap-region-mode)
+
+(require 'autopair)
+(autopair-global-mode 1)
+(setq autopair-autowrap t)
 
 ;; redo
 (add-to-list  'load-path "~/.emacs.d/redo")

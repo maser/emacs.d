@@ -48,8 +48,8 @@
 (setq default-directory "~/")
 
 ;; use CUA rectangle mode 
-(setq cua-enable-cua-keys nil)
-(cua-mode)
+;(setq cua-enable-cua-keys nil)
+;(cua-mode)
 
 ;; uniquify: no more confusion because two buffers have the same name
 (require 'uniquify)
@@ -85,3 +85,6 @@
 (global-set-key (kbd "s-p") 'windmove-up)
 (global-set-key (kbd "s-f") 'windmove-right)
 (global-set-key (kbd "s-b") 'windmove-left)
+
+;; delete-selection-mode
+(delete-selection-mode)
