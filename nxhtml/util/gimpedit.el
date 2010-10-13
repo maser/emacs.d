@@ -47,7 +47,7 @@
 ;;
 ;;; Code:
 
-(require 'w32-regdat nil t)
+(eval-and-compile (require 'w32-regdat nil t))
 
 ;; (message "%S" (gimpedit-get-remote-command))
 (defun gimpedit-get-remote-command ()

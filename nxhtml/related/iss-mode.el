@@ -62,32 +62,29 @@
 
 ;;; Code:
 
+(eval-and-compile (require 'compile))
+
 (defvar iss-compiler-path nil "Path to the iss compiler")
 
 ;;; End of user settings
 
-(defvar iss-mode-syntax-table nil
+(defvar iss-mode-syntax-table
+  (let ((table (make-syntax-table)))
+    ;; ";" starts a comment
+    ;;(modify-syntax-entry ?\; "<" iss-mode-syntax-table)
+    (modify-syntax-entry ?\; ". 12" table)
+    ;; and \n and \^M end a comment
+    (modify-syntax-entry ?\n ">"    table)
+    (modify-syntax-entry ?\^M ">"   table)
+
+    (modify-syntax-entry ?\" "."    table)
+
+    (modify-syntax-entry ?_ "w"     table)
+    table)
   "Syntax table in use in iss-mode buffers.")
 
-(if iss-mode-syntax-table
-    ()
-  (setq iss-mode-syntax-table (make-syntax-table))
 
-  ; ";" starts a comment
-  ;(modify-syntax-entry ?\; "<" iss-mode-syntax-table)
-  (modify-syntax-entry ?\; ". 12" iss-mode-syntax-table)
-  ;; and \n and \^M end a comment
-  (modify-syntax-entry ?\n ">"    iss-mode-syntax-table)
-  (modify-syntax-entry ?\^M ">"   iss-mode-syntax-table)
-
-  (modify-syntax-entry ?\" "."   iss-mode-syntax-table)
-
-  (modify-syntax-entry ?_ "w"    iss-mode-syntax-table))
-
-
-(defvar iss-font-lock-keywords nil "Expressions to highlight in iss mode.")
-
-(setq iss-font-lock-keywords
+(defvar iss-font-lock-keywords
   (list
    (cons (concat "^;\.*")
 	 'font-lock-comment-face)
@@ -109,12 +106,18 @@
                  "\\)\\>")
 	 'font-lock-variable-name-face)
    (cons (concat "\\<\\(HKCU\\|HKLM\\|dirifempty\\|files\\|filesandordirs\\)\\>")
-	 'font-lock-constant-face)))
+	 'font-lock-constant-face)
+   (list 'iss-fontify-options '(1 'font-lock-variable-name-face) '(2 'font-lock-keyword-face))
+   )
+  "Expressions to highlight in iss mode.")
 
-(defvar iss-mode-map () "Keymap used in iss-mode buffers.")
+(defun iss-fontify-options (bound)
+  (message "iss-fontify-options %s" bound)
+  (when (re-search-forward "^[ \t]*\\([^=]+\\)[ \t]*\\(=\\)" bound t)
+    (match-data)))
 
-(cond ((not iss-mode-map)
-       (setq iss-mode-map (make-sparse-keymap))))
+(defvar iss-mode-map (make-sparse-keymap)
+  "Keymap used in iss-mode buffers.")
 
 (easy-menu-define
  iss-menu
@@ -127,6 +130,8 @@
   ["InnoSetup Help"  (iss-compiler-help)  t]
   ))
 (easy-menu-add iss-menu)
+
+(defvar compilation-file-regexp-alist) ;; silence compiler, don't know the var.
 
 ;;;###autoload
 (defun iss-mode ()

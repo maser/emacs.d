@@ -55,10 +55,23 @@
 ;; bugs that ought to be fixed first since otherwise it is impossible
 ;; to know where point goes after hiding/unhiding.
 
+(eval-when-compile (require 'cl))
+(eval-when-compile (require 'hideshow))
+(eval-when-compile (require 'mumamo nil t))
+(eval-when-compile (require 'outline))
+
+(defsubst foldit-overlay-priority ()
+  (1+ (or (and (boundp 'mlinks-link-overlay-priority)
+               mlinks-link-overlay-priority)
+          100)))
+
 ;;;###autoload
 (defgroup foldit nil
   "Customization group for foldit folding helpers."
   :group 'nxhtml)
+
+(defvar foldit-temp-at-point-ovl nil)
+(make-variable-buffer-local 'foldit-temp-at-point-ovl)
 
 ;;;###autoload
 (define-minor-mode foldit-mode
@@ -124,6 +137,15 @@ indicating how they were hidden."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Outline
 
+(defvar foldit-outline-keymap
+  (let ((map (make-sparse-keymap)))
+    (define-key map "\r" 'foldit-outline-show-entry)
+    (define-key map [down-mouse-1] 'foldit-outline-show-entry)
+    (define-key map [S-tab]   'mlinks-backward-link)
+    (define-key map [tab]     'mlinks-forward-link)
+    (define-key map "\t"      'mlinks-forward-link)
+    map))
+
 (defun foldit-outline-change ()
   "Check outline overlays.
 Run this in `outline-view-change-hook'."
@@ -157,7 +179,7 @@ Run this in `outline-view-change-hook'."
         (overlay-put ovl 'mouse-face 'highlight)
         (overlay-put ovl 'help-echo "Press RET to show hidden part")
         (overlay-put ovl 'mlinks-link t)
-        (overlay-put ovl 'priority (1+ mlinks-link-overlay-priority))
+        (overlay-put ovl 'priority (foldit-overlay-priority))
         (mumamo-with-buffer-prepared-for-jit-lock
          (let* ((start-tag-beg (overlay-start ovl))
                 (start-tag-end start-tag-beg))
@@ -165,10 +187,10 @@ Run this in `outline-view-change-hook'."
                               'foldit-tag-end (copy-marker start-tag-end))))
         ))))
 
-(defvar foldit-outline-keymap
+(defvar foldit-outline-hide-again-keymap
   (let ((map (make-sparse-keymap)))
-    (define-key map "\r" 'foldit-outline-show-entry)
-    (define-key map [down-mouse-1] 'foldit-outline-show-entry)
+    (define-key map "\r" 'foldit-outline-hide-again)
+    (define-key map [down-mouse-1] 'foldit-outline-hide-again)
     (define-key map [S-tab]   'mlinks-backward-link)
     (define-key map [tab]     'mlinks-forward-link)
     (define-key map "\t"      'mlinks-forward-link)
@@ -194,15 +216,6 @@ Run this in `outline-view-change-hook'."
   (hide-entry))
 
 
-(defvar foldit-outline-hide-again-keymap
-  (let ((map (make-sparse-keymap)))
-    (define-key map "\r" 'foldit-outline-hide-again)
-    (define-key map [down-mouse-1] 'foldit-outline-hide-again)
-    (define-key map [S-tab]   'mlinks-backward-link)
-    (define-key map [tab]     'mlinks-forward-link)
-    (define-key map "\t"      'mlinks-forward-link)
-    map))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Hide/Show
 
@@ -216,6 +229,24 @@ Run this in `outline-view-change-hook'."
        (save-excursion
          (goto-char beg)
          (line-end-position))))
+
+(defvar foldit-hs-keymap
+  (let ((map (make-sparse-keymap)))
+    (define-key map "\r" 'foldit-hs-show-block)
+    (define-key map [down-mouse-1] 'foldit-hs-show-block)
+    (define-key map [S-tab]   'mlinks-backward-link)
+    (define-key map [tab]     'mlinks-forward-link)
+    (define-key map "\t"      'mlinks-forward-link)
+    map))
+
+(defvar foldit-hs-hide-again-keymap
+  (let ((map (make-sparse-keymap)))
+    (define-key map "\r" 'foldit-hs-hide-again)
+    (define-key map [down-mouse-1] 'foldit-hs-hide-again)
+    (define-key map [S-tab]   'mlinks-backward-link)
+    (define-key map [tab]     'mlinks-forward-link)
+    (define-key map "\t"      'mlinks-forward-link)
+    map))
 
 (defun foldit-hs-set-up-overlay (ovl)
   "Set up overlay OVL for hide/show."
@@ -237,28 +268,10 @@ Run this in `outline-view-change-hook'."
     (overlay-put ovl 'mouse-face 'highlight)
     (overlay-put ovl 'help-echo "Press RET to show hidden part")
     (overlay-put ovl 'mlinks-link t)
-    (overlay-put ovl 'priority (1+ mlinks-link-overlay-priority))
+    (overlay-put ovl 'priority (foldit-overlay-priority))
     (mumamo-with-buffer-prepared-for-jit-lock
      (put-text-property start-tag-beg (+ start-tag-beg 1)
                         'foldit-tag-end (copy-marker start-tag-end)))))
-
-(defvar foldit-hs-keymap
-  (let ((map (make-sparse-keymap)))
-    (define-key map "\r" 'foldit-hs-show-block)
-    (define-key map [down-mouse-1] 'foldit-hs-show-block)
-    (define-key map [S-tab]   'mlinks-backward-link)
-    (define-key map [tab]     'mlinks-forward-link)
-    (define-key map "\t"      'mlinks-forward-link)
-    map))
-
-(defvar foldit-hs-hide-again-keymap
-  (let ((map (make-sparse-keymap)))
-    (define-key map "\r" 'foldit-hs-hide-again)
-    (define-key map [down-mouse-1] 'foldit-hs-hide-again)
-    (define-key map [S-tab]   'mlinks-backward-link)
-    (define-key map [tab]     'mlinks-forward-link)
-    (define-key map "\t"      'mlinks-forward-link)
-    map))
 
 (defun foldit-hs-show-block ()
   "Show hidden block."
@@ -282,9 +295,6 @@ Run this in `outline-view-change-hook'."
 
 ;;; Fix-me: break out this
 ;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-(defvar foldit-temp-at-point-ovl nil)
-(make-variable-buffer-local 'foldit-temp-at-point-ovl)
-
 (defun foldit-add-temp-at-point-overlay (marker keymap msg)
   "Add a temporary overlay with a marker MARKER and a keymap KEYMAP.
 The overlay is also given the help echo MSG.
@@ -304,7 +314,7 @@ This overlay is removed as soon as point moves from current point."
     (overlay-put ovl 'mouse-face 'highlight)
     (overlay-put ovl 'help-echo msg)
     (overlay-put ovl 'mlinks-link t)
-    (overlay-put ovl 'priority (1+ mlinks-link-overlay-priority))
+    (overlay-put ovl 'priority (foldit-overlay-priority))
     (setq foldit-temp-at-point-ovl ovl)
     (add-hook 'post-command-hook
               'foldit-remove-temp-at-point-overlay

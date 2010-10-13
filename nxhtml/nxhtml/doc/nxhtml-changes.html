@@ -5,7 +5,7 @@
   <head>
     <title>News and Notes about nXhtml</title>
     <link href="wd/grapes/nxhtml-grapes.css" rel="StyleSheet" type="text/css" />
-<style type="text/css">
+    <style type="text/css">
 #nxhtml-home a {
     /* Image */
     display: block;
@@ -316,6 +316,9 @@
           <a href="#v2.03">v2.03</a>
           <a href="#v2.04">v2.04</a>
           <a href="#v2.05">v2.05</a>
+          <a href="#v2.06">v2.06</a>
+          <a href="#v2.07">v2.07</a>
+          <a href="#v2.08">v2.08</a>
         </div>
 
         <dl>
@@ -3328,7 +3331,7 @@
               </li>
             </ul>
           </dd>
-          <dt id="v2.05">2.05 - not yet released</dt>
+          <dt id="v2.05">2.05</dt>
           <dd id="v2.05-dd">
             <ul>
               <li>
@@ -3337,6 +3340,48 @@
                 </span>
               </li>
             </ul>
+          </dd>
+          <dt id="v2.06">2.06 - never released</dt>
+          <dd id="v2.06-dd">
+            <ul>
+              <li>
+                MuMaMo:
+                <ul>
+                  <li>
+                    Skipped fontification during indentation. (This was troublesome since major mode may have to be changed during indentation.)
+                  </li>
+                  <li>
+                    Included iss-mode and iss-mumamo-mode for editing of Inno Setup scripts.
+                  </li>
+                  <li>
+                    <span class="bugfix">
+                      Comments in eRuby &lt;%# .. %&gt; did not work. Fixed.
+                    </span>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Included better support for Java in flymake. It will can now recognize makefiles, ant and single java files and try to DTRT.
+              </li>
+            </ul>
+          </dd>
+          <dt id="v2.07">2.07 - never released</dt>
+          <dd id="v2.07-dd">
+            <p>
+              This version was never released, but was available as beta for testing (and use). During this beta I tried to finish the rewriting of the rewriting of the chunk dividing routines. (Those needed simplification. Initially I believed that chunks with different major could be created starting from anywhere in the file. This was complex and indeed a bad idea since the chunk dividing markers depends on the content of the file from the top.)
+            </p>
+            <p>
+              A lot of bugs where fixed during this and new things were added. Some things were removed. But there is no good logg of this anywhere because I did not have time to update that. Sorry. But if you are interested you can have a look at the bug database at Launchpad.
+            </p>
+          </dd>
+          <dt id="v2.08">2.08 - released 2010-04-25</dt>
+          <dd id="v2.08-dd">
+            <p>
+              This is the first released version since version 2.05 (which was released in Dec 2009).
+            </p>
+            <p>
+              One noticeable thing is that the menus were restructered to make it easier to find things. You can find some of the new things there. Most of the rest are internal changes and bug fixes.
+            </p>
           </dd>
         </dl>
       </div>

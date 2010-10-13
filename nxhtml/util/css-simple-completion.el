@@ -86,16 +86,16 @@ flymake-css if you want to."
 
             (case context
 
-              ( css-media-ids
+              ( 'css-media-ids
                 (css-simple-completing-w-pred "\\<[a-z0-9-]*" 0 "Media type: " css-media-ids))
 
-              ( css-at-ids
+              ( 'css-at-ids
                 (css-simple-completing-w-pred "@\\([a-z0-9-]*\\)" 1 "At rule: @" css-at-ids))
 
-              ( css-property-ids
+              ( 'css-property-ids
                 (css-simple-completing-w-pred "\\<[a-z-]*" 0 "CSS property name: " css-property-ids))
 
-              ( css-simple-selectors
+              ( 'css-simple-selectors
 
                 ;; Fix-me: Break out the first two
                 (when (looking-back "\\W#\\([a-z0-9-]*\\)")
@@ -124,7 +124,7 @@ flymake-css if you want to."
                             (throw 'result (list (point) (concat "#" (read-string "Html tag id: #"))))
                           (throw 'result (list (point) pre)))
                       (if (string= (substring pre 0 1) ".")
-                          (if (or (=1 (length pre))
+                          (if (or (= 1 (length pre))
                                   (and (> (length pre) 2)
                                        (string= (substring pre 0 3) ". (")))
                               (throw 'result (list (point) (concat "." (read-string "CSS class name: ."))))

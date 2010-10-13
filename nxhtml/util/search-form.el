@@ -51,12 +51,20 @@
 ;;
 ;;; Code:
 
+(eval-when-compile (require 'ourcomments-util))
 (require 'cus-edit)
+(require 'grep)
 
 (defvar search-form-sfield nil)
 (make-variable-buffer-local 'search-form-sfield)
 (defvar search-form-rfield nil)
 (make-variable-buffer-local 'search-form-rfield)
+
+(defvar search-form-win-config nil)
+(make-variable-buffer-local 'search-form-win-config)
+(put 'search-form-win-config 'permanent-local t)
+
+(defvar search-form-current-buffer nil)
 
 (defun search-form-multi-occur-get-buffers ()
   (let* ((bufs (list (read-buffer "First buffer to search: "
@@ -74,36 +82,40 @@
       (setq ido-ignore-item-temp-list bufs))
     (nreverse (mapcar #'get-buffer bufs))))
 
+(defvar search-form-buffer) ;; dyn var, silence compiler
+(defvar search-form-search-string) ;; dyn var, silence compiler
+(defvar search-form-replace-string) ;; dyn var, silence compiler
+
 (defun search-form-notify-1 (use-search-field
                              use-replace-field
                              w
                              hide-form
                              display-orig-buf)
-  (let ((search-string  (when use-search-field  (widget-value search-form-sfield)))
-        (replace-string (when use-replace-field (widget-value search-form-rfield)))
+  (let ((search-form-search-string  (when use-search-field  (widget-value search-form-sfield)))
+        (search-form-replace-string (when use-replace-field (widget-value search-form-rfield)))
         (search-form-buffer (current-buffer))
         (this-search (widget-get w :do-search))
         (do-it t))
     (if (and use-search-field
-               (= 0 (length search-string)))
+               (= 0 (length search-form-search-string)))
         (progn
           (setq do-it nil)
           (message "Please specify a search string"))
       (when (and use-replace-field
-                 (= 0 (length replace-string)))
+                 (= 0 (length search-form-replace-string)))
         (setq do-it nil)
         (message "Please specify a replace string")))
     (when do-it
       (if hide-form
           (progn
             (set-window-configuration search-form-win-config)
-            (funcall this-search search-string)
+            (funcall this-search search-form-search-string)
             ;;(kill-buffer search-form-buffer)
             )
         (when display-orig-buf
           (let ((win (display-buffer search-form-current-buffer t)))
             (select-window win t)))
-        ;;(funcall this-search search-string))
+        ;;(funcall this-search search-form-search-string))
         (funcall this-search w)
         ))))
 
@@ -119,9 +131,7 @@
 (defun search-form-notify-both-fields (w &rest ignore)
   (search-form-notify-1 t t w nil t))
 
-(defvar search-form-current-buffer nil)
-
-(defun search-form-insert-button (title function descr do-fun)
+(defun search-form-insert-button (title function descr do-search-fun)
   (widget-insert "  ")
   (let ((button-title (format " %-15s " title)))
     (widget-create 'push-button
@@ -202,10 +212,6 @@
                  :tag "help"
                  :button-face 'link)
   (widget-insert ")"))
-
-(defvar search-form-win-config nil)
-(make-variable-buffer-local 'search-form-win-config)
-(put 'search-form-win-config 'permanent-local t)
 
 (defun sf-widget-field-value-set (widget value)
   "Set current text in editing field."
@@ -327,22 +333,22 @@
     (widget-insert (propertize "* Buffers:" 'face 'font-lock-comment-face) "\n")
     (search-form-insert-fb "String Search" t
                            'search-forward
-                           (lambda (w) (search-forward search-string))
+                           (lambda (w) (search-forward search-form-search-string))
                            'search-backward
-                           (lambda (w) (search-backward search-string)))
+                           (lambda (w) (search-backward search-form-search-string)))
 
     (search-form-insert-fb "Regexp Search" t
                            're-search-forward
-                           (lambda (w) (re-search-forward search-string))
+                           (lambda (w) (re-search-forward search-form-search-string))
                            're-search-backward
-                           (lambda (w) (re-search-backward search-string)))
+                           (lambda (w) (re-search-backward search-form-search-string)))
 
     ;; occur
     (search-form-insert-search "Occur" 'occur
                                "Lines in buffer"
                                (lambda (w)
                                  (with-current-buffer (widget-get w :current-buffer)
-                                   (occur search-string)))
+                                   (occur search-form-search-string)))
                                t)
 
     ;; multi-occur
@@ -351,7 +357,7 @@
                                "Lines in specified buffers"
                                (lambda (w)
                                  (let ((bufs (search-form-multi-occur-get-buffers)))
-                                   (multi-occur bufs search-string)))
+                                   (multi-occur bufs search-form-search-string)))
                                t)
     ;;
     (widget-insert "\n")
@@ -373,7 +379,7 @@
                                "Search files in tags table"
                                (lambda (w)
                                  (with-current-buffer (widget-get w :current-buffer)
-                                   (tags-search search-string)))
+                                   (tags-search search-form-search-string)))
                                t)
 
     (widget-insert (make-string (window-width) ?-) "\n")
@@ -389,13 +395,13 @@
                                 'query-replace
                                 "In buffer from point"
                                 (lambda (w)
-                                  (query-replace search-string replace-string)))
+                                  (query-replace search-form-search-string search-form-replace-string)))
 
     (search-form-insert-replace "Replace Regexp"
                                 'query-replace-regexp
                                 "In buffer from point"
                                 (lambda (w)
-                                  (query-replace-regexp search-string replace-string)))
+                                  (query-replace-regexp search-form-search-string search-form-replace-string)))
 
     (widget-insert "\n" (propertize "* Files:" 'face 'font-lock-comment-face) "\n")
 
@@ -415,7 +421,7 @@
                                 'tags-query-replace
                                 "Replace in files in tags tables"
                                 (lambda (w)
-                                  (tags-query-replace search-string replace-string)))
+                                  (tags-query-replace search-form-search-string search-form-replace-string)))
 
     (buffer-disable-undo)
     (widget-setup)
@@ -433,7 +439,7 @@
 
 (defun search-form-r-or-lgrep (w l)
   (with-current-buffer (widget-get w :current-buffer)
-    (let* ((regexp search-string)
+    (let* ((regexp search-form-search-string)
            (files (grep-read-files regexp))
            (dir (read-directory-name (if l "In directory: "
                                        "Base directory: ")
@@ -450,7 +456,7 @@
   (search-form-l-or-r-dir-replace w nil))
 
 (defun search-form-l-or-r-dir-replace (w l)
-  (let ((files (replace-read-files search-string replace-string))
+  (let ((files (replace-read-files search-form-search-string search-form-replace-string))
         (dir (read-directory-name (if l
                                       "In directory: "
                                     "In directory tree: ")
@@ -459,8 +465,8 @@
                                    (buffer-file-name search-form-current-buffer))
                                   t)))
     (if l
-        (ldir-query-replace search-string replace-string files dir)
-      (rdir-query-replace search-string replace-string files dir))))
+        (ldir-query-replace search-form-search-string search-form-replace-string files dir)
+      (rdir-query-replace search-form-search-string search-form-replace-string files dir))))
 
 (provide 'search-form)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

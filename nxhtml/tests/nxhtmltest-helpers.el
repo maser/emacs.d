@@ -47,6 +47,12 @@
 (eval-when-compile (require 'cl))
 (require 'ert2)
 
+(defun nxhtmltest-goto-line (line)
+  (save-restriction
+    (widen)
+    (goto-char (point-min))
+    (forward-line (1- line))))
+
 (defun nxhtmltest-mumamo-error-messages ()
   (ert-get-messages "^MU:MuMaMo error"))
 

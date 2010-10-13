@@ -51,8 +51,8 @@
 (defvar jit-lock-start)
 (defvar jit-lock-end)
 
-;;(require 'mumamo) ;; Just for the defmacro ...
-;;(require 'mlinks nil t)
+(eval-when-compile (require 'mumamo)) ;; Just for the defmacro ...
+(eval-when-compile (require 'mlinks nil t))
 
 ;;;###autoload
 (defgroup html-write nil

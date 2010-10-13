@@ -47,6 +47,8 @@
 
 
 (require 'flymake)
+(require 'xml)
+
 
 (defcustom flymake-allowed-css-file-name-masks '(("\\.css\\'" flymake-css-init))
   "Filename extensions that switch on js syntax checks."
@@ -118,23 +120,18 @@ Test validating some CSS file by running:
     (add-to-list 'flymake-err-line-patterns rec)))
 
 
-(unless (or (featurep 'newstick-backend) (featurep 'newsticker-backend))
-  (load "newst-backend" t))
-(unless (or (featurep 'newstick-backend) (featurep 'newsticker-backend))
-  (message "newst-backend.el was not loaded, let us try the old name newsticker-backend.el:")
-  (load "newsticker-backend" t))
-
 ;;(defun flymake-make-overlay (beg end tooltip-text face mouse-face)
 (defadvice flymake-make-overlay (before
                                  flymake-css-ad-flymake-make-overlay
                                  activate
                                  compile)
-  (ad-set-arg 2 (newsticker--decode-numeric-entities (ad-get-arg 2))))
+  (ad-set-arg 2 (xml-substitute-numeric-entities (ad-get-arg 2))))
 
 ;; Fix-me: remove when this has been giving its proper place in Emacs.
-(unless (fboundp 'newsticker--decode-numeric-entities)
-  (message "Use Emacs 22 workaround for newsticker--decode-numeric-entities")
-  (defun newsticker--decode-numeric-entities (string)
+(eval-when-compile
+  (unless (fboundp 'xml-substitute-numeric-entities)
+    (message "Use Emacs 22 workaround for newsticker--decode-numeric-entities")
+    (defun xml-substitute-numeric-entities (string)
     "Decode SGML numeric entities by their respective utf characters.
 This is just a copy of the function in newst-backen.el for Emacs
 22 users.
@@ -155,7 +152,7 @@ by \"*\"."
             (setq start (1+ (match-beginning 0))))
           string)
       nil))
-  )
+    ))
 
 ;;(eval-after-load 'css-mode (flymake-css-load))
 

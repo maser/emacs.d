@@ -1,16 +1,16 @@
 ;;; iss-mumamo.el --- Defines multi major mode for Inno Setup files
 ;;
 ;; Author: Lennart Borgman (lennart O borgman A gmail O com)
-;; Created: 2008-08-09T23:29:02+0200 Sat
-;; Version: 0.2
-;; Last-Updated:
+;; Created: 2008-08-09
+;; Version: 0.3
+;; Last-Updated: 2009-12-12 Sat
 ;; URL:
 ;; Keywords:
 ;; Compatibility:
 ;;
 ;; Features that might be required by this library:
 ;;
-;;   None
+  ;; `comint', `compile', `iss-mode', `ring', `tool-bar'.
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -44,32 +44,26 @@
 ;;
 ;;; Code:
 
-(require 'pascal nil t)
-(require 'iss-mode nil t)
+(require 'iss-mode)
 (require 'mumamo)
 
 (defun mumamo-chunk-iss-code (pos min max)
-  "Find [code]...[, return range and `perl-mode'.
-See `mumamo-find-possible-chunk' for POS, MIN and MAX."
-  (mumamo-quick-static-chunk pos min max "[code]" "{*** End of CODE **}" nil 'pascal-mode nil))
+  "Find [code]..., return range and `pascal-mode'.
+See `mumamo-find-possible-chunk' for POS, MIN and MAX.
+
+Note that if this section is not the last"
+  (mumamo-quick-static-chunk pos min max "[code]" "{*** End of CODE **}" t 'pascal-mode t))
 
 ;;;###autoload
-(define-mumamo-multi-major-mode iss-mumamo
+(define-mumamo-multi-major-mode iss-mumamo-mode
   "Turn on multiple major modes Inno Setup .iss files.
-The code section will be in `pascal-mode' while the rest will be
-in `iss-mode'.
-
-\[code]
-
-... this will be in `pascal-mode'. Note the end mark below!
-
-{*** End of CODE **}
-"
+The main major mode will be `iss-mode'.
+The [code] section, if any, will be in `pascal-mode'."
     ("Inno ISS Family" iss-mode
      (mumamo-chunk-iss-code
       )))
 
-(add-to-list 'auto-mode-alist '("\\.iss\\'" . iss-mumamo))
+(add-to-list 'auto-mode-alist '("\\.iss\\'" . iss-mumamo-mode))
 
 (provide 'iss-mumamo)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

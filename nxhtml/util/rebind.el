@@ -44,8 +44,8 @@
 ;;
 ;;; Code:
 
-(require 'new-key-seq-widget)
-(require 'ourcomments-widgets)
+(eval-when-compile (require 'new-key-seq-widget nil t))
+(eval-when-compile (require 'ourcomments-widgets nil t))
 
 
 (defun rebind-toggle-first-modifier (orig-key-seq mod)
@@ -58,31 +58,6 @@
     new-key-seq))
 ;; (rebind-toggle-first-modifier (key-description-to-vector "C-c a") 'shift)
 ;; (rebind-toggle-first-modifier (key-description-to-vector "C-S-c a") 'shift)
-
-(defvar rebind-keys-mode-map nil)
-
-;;(rebind-update-keymap)
-(defun rebind-update-keymap ()
-  (let ((m (make-sparse-keymap)))
-    (dolist (group rebind-keys)
-      (when (nth 1 group)
-        (dolist (v (nth 2 group))
-          (let* ((orig-key   (nth 0 v))
-                 (comment    (nth 1 v))
-                 (enabled    (nth 2 v))
-                 (new-choice (nth 3 v))
-                 (new-fun    (nth 4 v))
-                 (orig-fun (lookup-key global-map orig-key))
-                 new-key)
-            (when enabled
-              (when new-choice
-                (if (memq new-choice '(meta control shift))
-                    (setq new-key (rebind-toggle-first-modifier orig-key new-choice))
-                  (setq new-key new-choice))
-                (define-key m new-key orig-fun))
-              (define-key m orig-key new-fun))))
-        (setq rebind-keys-mode-map m))))
-  (setq rebind--emul-keymap-alist (list (cons 'rebind-keys-mode rebind-keys-mode-map))))
 
 (defvar widget-commandp-prompt-value-history nil)
 
@@ -142,6 +117,24 @@
        t
        nil
        ourcomments-move-beginning-of-line)
+      (
+       [(control ?+)]
+       "C-+ often increases font size (in web browsers for example)."
+       t
+       shift
+       text-scale-adjust)
+      (
+       [(control ?-)]
+       "C-- often decreases font size (in web browsers for example)."
+       t
+       shift
+       text-scale-adjust)
+      (
+       [(control ?0)]
+       "C-0 often resets font size (in web browsers for example)."
+       t
+       shift
+       text-scale-adjust)
        )))
   "Normal Emacs keys that are remapped to follow some other standard.
 The purpose of this variable is to make it easy to switch between
@@ -154,7 +147,8 @@ on.
 *Note:* You can only move functions bound in the global key map
         this way.
 *Note:* To get CUA keys you should turn on option `cua-mode'.
-*Note:* To get vi key bindings call function `viper-mode'."
+*Note:* To get vi key bindings call function `viper-mode'.
+*Note:* `text-scale-adjust' already have default key bindings."
   :type '(repeat
           (list
            (string :tag "For what")
@@ -175,19 +169,36 @@ on.
             )))
   :set (lambda (sym val)
 	 (set-default sym val)
-	 (rebind-update-keymap))
+	 (when (featurep 'rebind)
+	   (rebind-update-keymap)))
   :group 'rebind)
+
+(defvar rebind-keys-mode-map nil)
 
 (defvar rebind--emul-keymap-alist nil)
 
-(defun rebind-keys-post-command ()
-  "Make sure we are first in the list when turned on.
-This is reasonable since we are using this mode to really get the
-key bindings we want!"
-  (unless (eq 'rebind--emul-keymap-alist (car emulation-mode-map-alists))
-    (setq emulation-mode-map-alists (delq 'rebind--emul-keymap-alist emulation-mode-map-alists))
-    (when rebind-keys-mode
-      (add-to-list 'emulation-mode-map-alists 'rebind--emul-keymap-alist))))
+;;(rebind-update-keymap)
+(defun rebind-update-keymap ()
+  (let ((m (make-sparse-keymap)))
+    (dolist (group rebind-keys)
+      (when (nth 1 group)
+        (dolist (v (nth 2 group))
+          (let* ((orig-key   (nth 0 v))
+                 (comment    (nth 1 v))
+                 (enabled    (nth 2 v))
+                 (new-choice (nth 3 v))
+                 (new-fun    (nth 4 v))
+                 (orig-fun (lookup-key global-map orig-key))
+                 new-key)
+            (when enabled
+              (when new-choice
+                (if (memq new-choice '(meta control shift))
+                    (setq new-key (rebind-toggle-first-modifier orig-key new-choice))
+                  (setq new-key new-choice))
+                (define-key m new-key orig-fun))
+              (define-key m orig-key new-fun))))
+        (setq rebind-keys-mode-map m))))
+  (setq rebind--emul-keymap-alist (list (cons 'rebind-keys-mode rebind-keys-mode-map))))
 
 ;;;###autoload
 (define-minor-mode rebind-keys-mode
@@ -204,10 +215,24 @@ field). There are some predifined keybindings for this."
   (if rebind-keys-mode
       (progn
         (rebind-update-keymap)
-        (rebind-keys-post-command)
+        ;;(rebind-keys-post-command)
         (add-hook 'post-command-hook 'rebind-keys-post-command t))
     (remove-hook 'post-command-hook 'rebind-keys-post-command)
     (setq emulation-mode-map-alists (delq 'rebind--emul-keymap-alist emulation-mode-map-alists))))
+
+(defun rebind-keys-post-command ()
+  "Make sure we are first in the list when turned on.
+This is reasonable since we are using this mode to really get the
+key bindings we want!"
+  (unless (eq 'rebind--emul-keymap-alist (car emulation-mode-map-alists))
+    (setq emulation-mode-map-alists (delq 'rebind--emul-keymap-alist emulation-mode-map-alists))
+    (when rebind-keys-mode
+      (add-to-list 'emulation-mode-map-alists 'rebind--emul-keymap-alist))))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Interactive functions for the keymap
+
 
 
 (provide 'rebind)

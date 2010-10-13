@@ -27,7 +27,7 @@
 
 ;; 1) Put anchored-transpose.el on your load path.
 ;; 2) Put the following 2 lines in your .emacs
-;;    (global-set-key [?\C-x ?t] 'anchored-transpose)
+;;    (global-set-key [?\C-x ?t] 'anchored-transpose) ;; Just a suggestion...
 ;;    (autoload 'anchored-transpose "anchored-transpose" nil t)
 
 ;;; History:
@@ -184,7 +184,6 @@ prior selection, ie secondary selection."
 ;;;###autoload
 (defun set-secondary-selection (beg end)
   "Set the secondary selection to the current region.
-mouse-set-secondary
 This must be bound to a mouse drag event."
   (interactive "r")
   (move-overlay mouse-secondary-overlay beg end (current-buffer))

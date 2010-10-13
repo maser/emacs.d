@@ -1118,6 +1118,8 @@ With' if the block is a `With ...', etc..."
       (insert end-statement)
       (visual-basic-indent-to-column end-indent))))
 
+(defvar delta-split-to-cur-point) ;; Don't know what it is, just silence compiler
+
 (defun visual-basic-insert-item ()
   "Insert a new item in a block.
 
@@ -1189,8 +1191,8 @@ Interting an item means:
 				nil)))
 			nil)))
 		(goto-char split-point)
-		(setq item-case (if (<= split-point cur-point) 'dim-split-before 'dim-split-after)
-		      delta-split-to-cur-point (- split-point cur-point))
+		(setq item-case (if (<= split-point cur-point) 'dim-split-before 'dim-split-after))
+                (setq delta-split-to-cur-point (- split-point cur-point))
 		(setq cur-point-mark (make-marker))
 		(set-marker cur-point-mark cur-point)
 		(looking-at "\\s-*")

@@ -45,6 +45,11 @@
 ;;
 ;;; Code:
 
+(eval-when-compile (require 'cl))
+(eval-when-compile (require 'mumamo))
+(eval-when-compile (require 'ourcomments-widgets))
+(require 'ps-print) ;; For ps-print-ensure-fontified
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Internal side functions etc
 

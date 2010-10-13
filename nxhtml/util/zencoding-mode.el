@@ -62,6 +62,21 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Generic parsing macros and utilities
 
+(eval-when-compile (require 'cl))
+
+(defcustom zencoding-preview-default t
+  "If non-nil then preview is the default action.
+This determines how `zencoding-expand-line' works by default."
+  :type 'boolean
+  :group 'zencoding)
+
+(defcustom zencoding-insert-flash-time 0.5
+  "Time to flash insertion.
+Set this to a negative number if you do not want flashing the
+expansion after insertion."
+  :type '(number :tag "Seconds")
+  :group 'zencoding)
+
 (defmacro zencoding-aif (test-form then-form &rest else-forms)
   "Anaphoric if. Temporary variable `it' is the result of test-form."
   `(let ((it ,test-form))
@@ -602,19 +617,6 @@ See also `zencoding-expand-line'."
     (when (overlayp zencoding-flash-ovl)
       (delete-overlay zencoding-flash-ovl))
     (setq zencoding-flash-ovl nil)))
-
-(defcustom zencoding-preview-default t
-  "If non-nil then preview is the default action.
-This determines how `zencoding-expand-line' works by default."
-  :type 'boolean
-  :group 'zencoding)
-
-(defcustom zencoding-insert-flash-time 0.5
-  "Time to flash insertion.
-Set this to a negative number if you do not want flashing the
-expansion after insertion."
-  :type '(number :tag "Seconds")
-  :group 'zencoding)
 
 (defun zencoding-insert-and-flash (markup)
   (zencoding-remove-flash-ovl (current-buffer))

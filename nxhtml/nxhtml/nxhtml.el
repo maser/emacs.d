@@ -44,6 +44,11 @@
 ;;
 ;;; Code:
 
+(eval-when-compile (require 'cl))
+(eval-when-compile (require 'loadhist))
+(eval-when-compile (require 'nxhtml-base))
+(eval-and-compile (require 'nxhtml-menu nil t))
+
 ;;;###autoload
 (defgroup nxhtml nil
   "Customization of `nxhtml-mode'."
@@ -199,7 +204,7 @@
   (with-output-to-temp-buffer (help-buffer)
     (help-setup-xref (list #'nxhtml-features-check) (interactive-p))
     (with-current-buffer (help-buffer)
-      (nxhtml-minor-mode 1)
+      (nxhtml-menu-mode 1)
       (erase-buffer)
       (let ((s (concat "Elisp modules used by nXhtml version " nxhtml-menu:version ":")))
         (put-text-property 0 (length s)

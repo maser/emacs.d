@@ -5,7 +5,7 @@
 ;; Author: Lennart Borgman
 ;; Created: Fri Oct 21 2005
 (defconst hfyview:version "0.63") ;; Version:
-;; Last-Updated: 2009-11-20 Fri
+;; Last-Updated: 2010-04-16 Fri
 ;; Keywords: printing
 ;; URL: http://OurComments.org/Emacs/DL/elisp/hfyview.el
 ;; Compatibility:
@@ -13,13 +13,10 @@
 ;;
 ;; Features that might be required by this library:
 ;;
-  ;; `cl', `cus-edit', `cus-face', `cus-load', `cus-start', `custom',
-  ;; `easymenu', `faces', `font-lock', `htmlfontify', `syntax',
-  ;; `wid-edit', `widget'.
+  ;; `easymenu'.
 ;;
 ;;
-;; You can find htmlfontify.el at
-;;   http://www.emacswiki.org/cgi-bin/wiki/HtmlFontify
+;; htmlfontify.el is part of Emacs.
 ;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -102,7 +99,7 @@
     minibuffer-local-filename-completion-map
     minibuffer-local-isearch-map
     minibuffer-local-map
-    minibuffer-local-must-match-filename-map
+    ;; minibuffer-local-must-match-filename-map
     minibuffer-local-must-match-map
     minibuffer-local-ns-map
     viper-minibuffer-map
@@ -196,6 +193,7 @@ window."
                 :visible t))
   )
 
+;;;###autoload
 (defcustom hfyview-quick-print-in-files-menu nil
   "Add Quick print entries to File menu if non-nil.
 If you set this to nil you have to restart Emacs to get rid of
@@ -295,6 +293,8 @@ With command prefix also show html source in other window."
                 (char-to-string c)))
              (append str)
              ""))
+
+(defvar viper-mode-string) ;; Silence compiler
 
 (defun hfyview-fontify-win-to (win tag whole-buffer)
   "Return html code for window WIN.
