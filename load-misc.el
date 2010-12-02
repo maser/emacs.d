@@ -7,10 +7,6 @@
 (add-to-list 'load-path "~/.emacs.d/textmate")
 (require 'textmate)
 (textmate-mode)
-; some nice keybindings
-(global-set-key (kbd "s-t") 'textmate-goto-file)
-(global-set-key (kbd "s-T") 'textmate-goto-symbol)
-(global-set-key (kbd "C-c C-c") 'comment-or-uncomment-region-or-line)
 
 ;; cc-mode
 (require 'cc-mode)
