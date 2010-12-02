@@ -4,9 +4,6 @@
            (local-set-key (kbd "<return>") 'newline-and-indent)
 ))
 
-(require 'js2-mode)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-
 ;;; nxhml
 (if load-nxhtml
     (progn
