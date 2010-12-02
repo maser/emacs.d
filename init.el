@@ -20,3 +20,5 @@
 (load-file "~/.emacs.d/load-misc.el")
 (load-file "~/.emacs.d/load-ruby-and-rails.el")
 (load-file "~/.emacs.d/load-web.el")
+
+(load-file "~/.emacs.d/zeitgeist.el")
