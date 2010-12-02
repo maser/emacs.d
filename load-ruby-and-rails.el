@@ -20,6 +20,7 @@
 ))
 
 (load-file "~/.emacs.d/flymake-ruby.el")
+(add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo-mode))
 
 ;; rinari
 (add-to-list 'load-path "~/.emacs.d/rinari")
