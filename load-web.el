@@ -28,5 +28,6 @@
  '(mumamo-background-chunk-submode4 ((t (:background "#222222")))))
 
 
-;; Sass
+;; Sass/SCSS
 (require 'sass-mode)
+(require 'scss-mode)
