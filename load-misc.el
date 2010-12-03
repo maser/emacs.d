@@ -16,32 +16,6 @@
   (define-key c-mode-base-map "\C-m" 'c-context-line-break))
 (add-hook 'c-mode-common-hook 'custom-c-mode-common-hook)
 
-;; anything
-(require 'anything)
-(require 'anything-config)
-
-(setq anything-sources
-      '(anything-c-source-buffers
-        anything-c-source-buffer-not-found
-        anything-c-source-file-name-history
-        anything-c-source-info-pages
-        anything-c-source-info-elisp
-        anything-c-source-man-pages
-        anything-c-source-locate
-        anything-c-source-emacs-commands
-        anything-c-source-files-in-current-dir
-        anything-c-source-emacs-functions
-        anything-c-source-emacs-variables
-        anything-c-source-bookmarks
-        anything-c-source-bookmarks-ssh
-        anything-c-source-bookmarks-local
-        anything-c-source-imenu
-        anything-c-source-ctags
-        anything-c-source-semantic
-        anything-c-source-kill-ring
-        anything-c-source-fixme
-        ))
-
 ;; Interactively Do Things (highly recommended, but not strictly required)
 (require 'ido)
 (ido-mode t)
