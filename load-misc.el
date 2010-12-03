@@ -137,3 +137,7 @@
 ;; etags-table
 (require 'etags-table)
 (setq etags-table-search-up-depth 100)
+
+;; ido search for tags
+(load-file "~/.emacs.d/my-ido-find-tag.el")
+(global-set-key (kbd "M-.") 'my-ido-find-tag)
