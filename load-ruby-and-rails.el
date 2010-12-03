@@ -24,6 +24,6 @@
 (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo-mode))
 
 ;; Rsense
-(setq rsense-home "/home/maser/.emacs.d/rsense")
+(setq rsense-home (expand-file-name "~/.emacs.d/rsense"))
 (add-to-list 'load-path (concat rsense-home "/etc"))
 (require 'rsense)
