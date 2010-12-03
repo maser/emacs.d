@@ -134,3 +134,6 @@
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (setq org-log-done t)
 
+;; etags-table
+(require 'etags-table)
+(setq etags-table-search-up-depth 100)
