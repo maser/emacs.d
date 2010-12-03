@@ -11,8 +11,6 @@
     (setq load-ecb t))
 (if (not (boundp 'load-cedet))
     (setq load-cedet t))
-(if (not (boundp 'load-rcov))
-    (setq load-rcov t))
 (if (not (boundp 'load-nxhtml))
     (setq load-nxhtml t))
 
