@@ -8,6 +8,15 @@
 (add-to-list 'auto-mode-alist '(".irbrc" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.builder$" . ruby-mode))
 
+(defun my-newline-and-indent ()
+  "I don't like backtraces popping up and ruby-indent-line seems to really enjoy that."
+  (interactive)
+  (condition-case err
+      (newline-and-indent)
+    (error 
+     (message "%s" (error-message-string err))))
+  )
+
 ;; ruby-mode-hook
 (add-hook 'ruby-mode-hook
          (lambda ()
@@ -18,7 +27,7 @@
            (set (make-local-variable 'indent-tabs-mode) 'nil)
            (set (make-local-variable 'tab-width) 2)
            ;; (imenu-add-to-menubar "IMENU")
-           (local-set-key (kbd "<return>") 'newline-and-indent)
+           (local-set-key (kbd "<return>") 'my-newline-and-indent)
 	   (add-to-list 'ac-sources 'ac-source-rsense-method)
 	   (add-to-list 'ac-sources 'ac-source-rsense-constant)
 	   (flyspell-prog-mode)
