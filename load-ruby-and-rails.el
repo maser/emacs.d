@@ -40,3 +40,9 @@
 (setq rsense-home (expand-file-name "~/.emacs.d/rsense"))
 (add-to-list 'load-path (concat rsense-home "/etc"))
 (require 'rsense)
+
+(add-to-list 'load-path "~/.emacs.d/rspec-mode")
+(require 'rspec-mode)
+
+(load-file "~/.emacs.d/yasnippets-rails/setup.el")
+(load-file "~/.emacs.d/yasnippets-rspec/setup.el")

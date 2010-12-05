@@ -13,3 +13,12 @@
 [submodule "auto-complete"]
 	path = auto-complete
 	url = http://cx4a.org/repo/auto-complete.git
+[submodule "rspec-mode"]
+	path = rspec-mode
+	url = https://github.com/pezra/rspec-mode.git
+[submodule "yasnippets-rails"]
+	path = yasnippets-rails
+	url = https://github.com/mknittig/yasnippets-rails.git
+[submodule "yasnippets-rspec"]
+	path = yasnippets-rspec
+	url = https://github.com/gary/yasnippets-rspec.git
