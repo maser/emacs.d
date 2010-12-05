@@ -116,3 +116,6 @@
 ;; ido search for tags
 (load-file "~/.emacs.d/my-ido-find-tag.el")
 (global-set-key (kbd "M-.") 'my-ido-find-tag)
+
+;; yasnippet
+(require 'yasnippet-bundle)
