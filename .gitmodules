@@ -22,3 +22,6 @@
 [submodule "yasnippets-rspec"]
 	path = yasnippets-rspec
 	url = https://github.com/gary/yasnippets-rspec.git
+[submodule "magit"]
+	path = magit
+	url = git://github.com/philjackson/magit.git
