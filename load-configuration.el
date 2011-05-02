@@ -47,10 +47,6 @@
 
 (setq default-directory "~/")
 
-;; use CUA rectangle mode 
-;(setq cua-enable-cua-keys nil)
-;(cua-mode)
-
 ;; uniquify: no more confusion because two buffers have the same name
 (require 'uniquify)
 (setq
@@ -63,17 +59,6 @@
 (setq color-theme-is-global t)
 (require 'zenburn)
 (color-theme-zenburn)
-
-;; (load "~/.emacs.d/color-theme-twilight.el")
-;; (color-theme-twilight)
-
-;; (defun set-colors ()
-;;   (color-theme-arjen)
-;;   (set-background-color "#2b2b2b")
-;;   (set-foreground-color "white")
-;;   (set-face-background 'modeline "DarkRed")
-;;   (set-face-foreground 'modeline "white"))
-;; (set-colors)
 
 ;; bookmarks
 (setq
@@ -94,4 +79,15 @@
 ;; Make sure all backup files only live in one place
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
-(add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
+(require 'whitespace)
+(setq whitespace-style 'trailing)
+(setq whitespace-trailing-regexp
+  "\\b.*\\(\\(\t\\| \\|\xA0\\|\x8A0\\|\x920\\|\xE20\\|\xF20\\)+\\)$")
+(global-whitespace-mode)
+
+
+;; dired
+(setq dired-listing-switches "-aohD")
+
+;; hl-line
+(hl-line-mode)
