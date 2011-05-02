@@ -116,3 +116,6 @@
 (setq dired-details-hidden-string "")
 
 (load-file "~/.emacs.d/camelscore.el")
+
+(if load-zeitgeist
+    (load-file "~/.emacs.d/zeitgeist.el"))

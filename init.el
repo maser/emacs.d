@@ -13,10 +13,10 @@
     (setq load-cedet t))
 (if (not (boundp 'load-nxhtml))
     (setq load-nxhtml t))
+(if (not (boundp 'load-zeitgeist))
+    (setq load-zeitgeist t))
 
 (load-file "~/.emacs.d/load-configuration.el")
 (load-file "~/.emacs.d/load-misc.el")
 (load-file "~/.emacs.d/load-ruby-and-rails.el")
 (load-file "~/.emacs.d/load-web.el")
-
-(load-file "~/.emacs.d/zeitgeist.el")
