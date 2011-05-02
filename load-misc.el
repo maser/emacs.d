@@ -88,9 +88,7 @@
 "culpa qui officia deserunt mollit anim id est laborum."))
 
 (if (require 'sml-modeline nil 'noerror)    ;; use sml-modeline if available
-  (progn
-    (sml-modeline-mode 1)                   ;; show buffer pos in the mode line
-    (scroll-bar-mode -1)))                  ;; turn off the scrollbar
+    (sml-modeline-mode 1))                  ;; show buffer pos in the mode line
 
 ;; org-mode
 (require 'org-install)
