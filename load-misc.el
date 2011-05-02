@@ -1,12 +1,10 @@
-;; textmate mode
-(setq *textmate-project-roots*
+(setq *find-file-in-project-project-roots*
       '(".git" ".hg"))
-(setq *textmate-gf-exclude*
-      "/\\.|vendor|fixtures|tmp|log|build|\\.xcodeproj|\\.nib|\\.framework|\\.app|\\.pbproj|\\.pbxproj|\\.xcode|\\.xcodeproj|\\.bundle|\\.pyc|gems")
-(setq textmate-find-files-command "cd %s; find -type f")
-(add-to-list 'load-path "~/.emacs.d/textmate")
-(require 'textmate)
-(textmate-mode)
+(setq *find-file-in-project-gf-exclude*
+      "/\\.|/vendor/|/fixtures/|/tmp/|/log/")
+(setq find-file-in-project-use-file-cache nil)
+(require 'find-file-in-project)
+(find-file-in-project-mode)
 
 ;; cc-mode
 (require 'cc-mode)
@@ -53,9 +51,6 @@
 (if load-cedet
     (progn
       (require 'cedet)
-      ;(semantic-load-enable-minimum-features) ; is included in:
-      ;(semantic-load-enable-code-helpers) ; is included in:
-      ;(semantic-load-enable-gaudy-code-helpers) ; is included in:
       (semantic-load-enable-excessive-code-helpers)
       (setq semantic-load-turn-everything-on t)
       (require 'semantic-ia)))
@@ -68,11 +63,6 @@
 (if load-ecb
     (add-hook 'window-setup-hook 'ecb-redraw-layout t))
 
-;; wrap regions like in textmate
-;; (add-to-list 'load-path "~/.emacs.d/wrap-region")
-;; (require 'wrap-region)
-;; (add-hook 'find-file-hook 'wrap-region-mode)
-
 (require 'autopair)
 (autopair-global-mode 1)
 (setq autopair-autowrap t)
@@ -82,8 +72,8 @@
 (require 'redo)
 (global-set-key [(control -)] 'redo)
 
-(add-to-list 'load-path "~/.emacs.d/git-emacs")
-(require 'git-emacs)
+(add-to-list 'load-path "~/.emacs.d/magit")
+(require 'magit)
 
 ;; Lorem ipsum dolor sit amet
 (defun lorem ()
@@ -98,7 +88,7 @@
 "culpa qui officia deserunt mollit anim id est laborum."))
 
 (if (require 'sml-modeline nil 'noerror)    ;; use sml-modeline if available
-  (progn 
+  (progn
     (sml-modeline-mode 1)                   ;; show buffer pos in the mode line
     (scroll-bar-mode -1))                   ;; turn off the scrollbar
   (scroll-bar-mode 1)                       ;; otherwise, show a scrollbar...
@@ -119,3 +109,14 @@
 
 ;; yasnippet
 (require 'yasnippet-bundle)
+
+;; move-text
+(require 'move-text)
+(global-set-key [M-up] 'move-text-up)
+(global-set-key [M-down] 'move-text-down)
+
+;; dired-details
+(require 'dired-details)
+(setq dired-details-hidden-string "")
+
+(load-file "~/.emacs.d/camelscore.el")
