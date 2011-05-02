@@ -1,6 +1,3 @@
-[submodule "wrap-region"]
-	path = wrap-region
-	url = git://github.com/rejeep/wrap-region.git
 [submodule "rsense"]
 	path = rsense
 	url = http://cx4a.org/repo/rsense.git
