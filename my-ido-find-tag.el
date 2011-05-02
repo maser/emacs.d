@@ -7,13 +7,13 @@
     (my-tags-completion-table)
     (let (tag-names)
       (mapc (lambda (x)
-	      (unless (integerp x)
-		(push (prin1-to-string x t) tag-names)))
-	    my-tags-completion-table)
+              (unless (integerp x)
+                (push (prin1-to-string x t) tag-names)))
+            my-tags-completion-table)
       ;; put symbol-at-point at the beginning
       ;; inspired (i.e. copied) from textmate-goto-symbol in textmate.el
       (when (symbol-at-point)
-	(let* ((regexp (concat (regexp-quote (prin1-to-string (symbol-at-point))) "$"))
+        (let* ((regexp (concat (regexp-quote (prin1-to-string (symbol-at-point))) "$"))
                (matching-tags (delq nil
                                        (mapcar
                                         (lambda (tag)
@@ -39,26 +39,25 @@ tags table and its (recursively) included tags tables.
   (or my-tags-completion-table
       ;; No cached value for this buffer.
       (condition-case ()
-	  (let (current-table combined-table)
-	    (message "Making tags completion table for %s..." buffer-file-name)
-	    (save-excursion
-	      ;; Iterate over the current list of tags tables.
-	      (message "hello")
-	      (while (visit-tags-table-buffer (and combined-table t))
-		;; Find possible completions in this table.
-		(message (number-to-string (length (setq current-table (anything-yaetags-make-candidates)))))
-		;; Merge this buffer's completions into the combined table.
-		(if combined-table
-		    (mapatoms
-		     (lambda (sym) (intern (symbol-name sym) combined-table))
-		     current-table)
-		  (setq combined-table current-table))))
-	    (message "Making tags completion table for %s...done"
-		     buffer-file-name)
-	    ;; Cache the result in a buffer-local variable.
-	    (setq my-tags-completion-table combined-table))
-	(quit (message "Tags completion table construction aborted.")
-	      (setq my-tags-completion-table nil)))))
+          (let (current-table combined-table)
+            (message "Making tags completion table for %s..." buffer-file-name)
+            (save-excursion
+              ;; Iterate over the current list of tags tables.
+              (while (visit-tags-table-buffer (and combined-table t))
+                ;; Find possible completions in this table.
+                (message (number-to-string (length (setq current-table (anything-yaetags-make-candidates)))))
+                ;; Merge this buffer's completions into the combined table.
+                (if combined-table
+                    (mapatoms
+                     (lambda (sym) (intern (symbol-name sym) combined-table))
+                     current-table)
+                  (setq combined-table current-table))))
+            (message "Making tags completion table for %s...done"
+                     buffer-file-name)
+            ;; Cache the result in a buffer-local variable.
+            (setq my-tags-completion-table combined-table))
+        (quit (message "Tags completion table construction aborted.")
+              (setq my-tags-completion-table nil)))))
 
 
 ;; anything-yaetags-make-candidates from anything-yaetags.el, as
@@ -80,23 +79,23 @@ We don't use `etags-tags-completion-table', because this function is faster than
   (save-excursion
     (let ((tab (make-hash-table :test 'equal :size 511)))
       (let ((reporter
-	     (make-progress-reporter
-	      (format "Making candidates for %s..." buffer-file-name)
-	      (point-min) (point-max))))
-	(goto-char (point-min))
-	(while (re-search-forward "\^?\\(.+\\)\^a" nil t)
-	  (puthash (match-string-no-properties 1) t tab)
-	  (progress-reporter-update reporter (point)))
+             (make-progress-reporter
+              (format "Making candidates for %s..." buffer-file-name)
+              (point-min) (point-max))))
+        (goto-char (point-min))
+        (while (re-search-forward "\^?\\(.+\\)\^a" nil t)
+          (puthash (match-string-no-properties 1) t tab)
+          (progress-reporter-update reporter (point)))
       (let ((msg (format "Sorting candidates for %s..." buffer-file-name))
-	    list)
-	(message "%s" msg)
-	(maphash (lambda (key value) (push key list))
-		 tab)
-	(prog1
-	    (sort list
-		  (lambda (a b)
-		    (let ((cmp (compare-strings a 0 nil b 0 nil t)))
-		      (if (eq cmp t)
-			  (string< a b)
-			(< cmp 0)))))
-	  (message "%sdone" msg)))))))
+            list)
+        (message "%s" msg)
+        (maphash (lambda (key value) (push key list))
+                 tab)
+        (prog1
+            (sort list
+                  (lambda (a b)
+                    (let ((cmp (compare-strings a 0 nil b 0 nil t)))
+                      (if (eq cmp t)
+                          (string< a b)
+                        (< cmp 0)))))
+          (message "%sdone" msg)))))))
