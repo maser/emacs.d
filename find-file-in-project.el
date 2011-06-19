@@ -140,30 +140,71 @@ Symbols matching the text at point are put first in the completion list."
            (position (cdr (assoc selected-symbol name-and-pos))))
       (goto-char (if (overlayp position) (overlay-start position) position)))))
 
-(defun find-file-in-project-goto-file ()
+(defun find-file-in-project-goto-file (prefix-arg)
   "Uses your completing read to quickly jump to a file in a project."
-  (interactive)
-  (let ((root (find-file-in-project-project-root)))
-    (when (null root)
-      (error "Can't find any .git directory"))
-    (let ((files (find-file-in-project-cached-project-files root))
-	  (name-file-mapping (make-hash-table :test 'equal)))
+  (interactive "p")
+  (let ((root (find-file-in-project-project-root)) (show-full-path (if (/= prefix-arg 1) 't)))
+    (if (null root)
+        (message "Can't find any .git directory")
+      (let ((files (find-file-in-project-cached-project-files root))
+            (name-file-mapping (make-hash-table :test 'equal)),
+            (display-names '()))
 
-      ;; generate display names for files and a mapping from the name to the file name
-      (mapcar (lambda (file)
-		(puthash (format "%s [%s]" (car (reverse (split-string file "/"))) file) file name-file-mapping)
-		) files)
-      
-      (find-file
-       (concat
-	(expand-file-name root) "/"
-	(gethash (find-file-in-project-completing-read
-		  "Find file: "
-		  (mapcar
-		   (lambda (e)
-		     (format "%s [%s]" (car (reverse (split-string e "/"))) e)
-		     ) files))
-		 name-file-mapping))))))
+        ;; generate display names for files and a mapping from the name to the file name
+        (mapcar (lambda (file)
+                  (if show-full-path
+                      (puthash file file name-file-mapping)
+                    (find-file-in-project-puthash file name-file-mapping))
+                  ) files)
+
+        (maphash (lambda (display-name file)
+                   (setq display-names (cons display-name display-names)))
+                 name-file-mapping)
+        
+        (find-file
+         (concat
+          (expand-file-name root) "/"
+          (gethash (find-file-in-project-completing-read
+                    "Find file: "
+                    display-names)
+                   name-file-mapping)))))))
+
+(defun find-file-in-project-puthash (file hash)
+  "Put filename into hash, but make sure the key is unique (works more or less like uniquify)."
+  (find-file-in-project-puthash-uniquify file 
+                                         (find-file-in-project-puthash-find-unique-level file hash) 
+                                         hash))
+
+(defun find-file-in-project-puthash-find-unique-level (file hash &optional level)
+  "Figure out how many levels of directories have to be included to make the file name unique in the hash."
+  (if (null level)
+      (setq level 0))
+  (let ((max-level (- (length (reverse (split-string file "/"))) 1)))
+       (cond ((> level max-level)
+              max-level)
+             ((null (gethash (find-file-in-project-puthash-build-name file level) hash))
+              level)
+             (t (find-file-in-project-puthash-find-unique-level file hash (+ level 1))))))
+
+(defun find-file-in-project-puthash-uniquify (file level hash)
+  "Put the filename into the hash and append `level' levels of directories to it and the existing file in the hash."
+  (puthash (find-file-in-project-puthash-build-name file level) file hash)
+  (if (> level 0)
+      (let* ((old-level (- level 1))
+             (old-entry-name (find-file-in-project-puthash-build-name file old-level))
+             (old-entry (gethash old-entry-name hash)))
+        (unless (string= old-entry file)
+          (remhash old-entry-name hash)
+          (puthash (find-file-in-project-puthash-build-name old-entry level) old-entry hash)))))
+
+
+(defun find-file-in-project-puthash-build-name (file level)
+  "Build a name that includes `level' directories"
+  (let* ((levels (reverse (split-string file "/")))
+        (actual-level (min (+ level 1) (length levels))))
+    (if (< level 0)
+        (error "level negative: %s" level))
+    (mapconcat 'identity (nbutlast levels (- (length levels) actual-level)) "|")))
 
 (defun find-file-in-project-clear-cache ()
   "Clears the project root and project files cache. Use after adding files."
