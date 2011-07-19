@@ -49,8 +49,9 @@
 (global-auto-complete-mode t)
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
-(setq ac-auto-start 2)   ; start completion when entered 3 characters
+(setq ac-auto-start 0)   ; start completion when entered 3 characters
 (setq ac-dwim 3)         ; Do what i mean
+(setq ac-trigger-key "TAB")
 
 ;; cedet
 (if load-cedet
