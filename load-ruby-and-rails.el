@@ -43,6 +43,7 @@
 
 (load-file "~/.emacs.d/flymake-ruby.el")
 (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo-mode))
+(add-to-list 'auto-mode-alist '("\\.text\\.plain\\.erb\\'" . eruby-mumamo-mode))
 
 ;; Rsense
 (setq rsense-home (expand-file-name "~/.emacs.d/rsense"))
