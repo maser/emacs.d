@@ -53,3 +53,9 @@
 
 (load-file "~/.emacs.d/yasnippets-rails/setup.el")
 (load-file "~/.emacs.d/yasnippets-rspec/setup.el")
+
+
+(add-to-list 'load-path "~/.emacs.d/cucumber.el")
+(require 'feature-mode)
+(add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
+(yas/load-directory "~/.emacs.d/cucumber.el/snippets")
