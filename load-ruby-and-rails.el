@@ -7,6 +7,7 @@
 (add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
 (add-to-list 'auto-mode-alist '(".irbrc" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.builder$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rabl$" . ruby-mode))
 
 (defun my-newline-and-indent ()
   "I don't like backtraces popping up and ruby-indent-line seems to really enjoy that."
