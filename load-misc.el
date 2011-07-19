@@ -137,3 +137,5 @@
 ;; (setq viper-expert-level  '5)
 ;; (setq viper-inhibit-startup-message  't)
 ;; (require 'viper)
+
+(load-file "~/.emacs.d/puppet-mode-init.el")
