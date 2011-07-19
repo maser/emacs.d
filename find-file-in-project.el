@@ -67,7 +67,7 @@ the project root.")
 
 (defvar *find-file-in-project-mode-map*
   (let ((map (make-sparse-keymap)))
-    (define-key map [(control c)(control /)] 'comment-or-uncomment-region-or-line)
+    (define-key map [(control c)(control /)] 'comment-or-uncomment-region)
     (define-key map [(meta t)] 'find-file-in-project-goto-file)
   map))
 
