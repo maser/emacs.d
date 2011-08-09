@@ -147,7 +147,7 @@ Symbols matching the text at point are put first in the completion list."
     (if (null root)
         (message "Can't find any .git directory")
       (let ((files (find-file-in-project-cached-project-files root))
-            (name-file-mapping (make-hash-table :test 'equal)),
+            (name-file-mapping (make-hash-table :test 'equal))
             (display-names '()))
 
         ;; generate display names for files and a mapping from the name to the file name
