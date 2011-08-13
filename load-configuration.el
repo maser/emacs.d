@@ -97,3 +97,6 @@
 
 ;; hl-line
 (hl-line-mode)
+
+;; auto fill mode
+(auto-fill-mode 1)

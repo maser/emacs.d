@@ -39,6 +39,8 @@
            (add-to-list 'ac-sources 'ac-source-rsense-method)
            (add-to-list 'ac-sources 'ac-source-rsense-constant)
            (flyspell-prog-mode)
+           (auto-fill-mode 1)
+           (set (make-local-variable 'comment-auto-fill-only-comments) t)
 ))
 
 (load-file "~/.emacs.d/flymake-ruby.el")
