@@ -139,3 +139,7 @@
 ;; (require 'viper)
 
 (load-file "~/.emacs.d/puppet-mode-init.el")
+
+;; coffee-mode
+(add-to-list 'load-path "~/.emacs.d/coffee-mode")
+(require 'coffee-mode)
