@@ -55,11 +55,8 @@
 
 
 ; colors
-; emacs 24 doesn’t like this
-(if (string-match "24." (emacs-version))
-    (progn 
-      (require 'zenburn-theme)
-      (load-theme 'zenburn))
+(if (string-match "GNU Emacs 24." (emacs-version))
+    (require 'zenburn-theme)
   (progn
     (require 'color-theme)
     (setq color-theme-is-global t)
