@@ -5,14 +5,14 @@
 (setq inhibit-startup-screen t)
 (setq inhibit-startup-message t)
 
-;; Remove toolbar and scrollbar
+;; Remove toolbar, scrollbar and menu bar
 (if (and (fboundp 'tool-bar-mode)
-	 (fboundp 'scroll-bar-mode))
+	 (fboundp 'scroll-bar-mode)
+         (fboundp 'menu-bar-mode))
     (progn
       (tool-bar-mode -1)
-      (scroll-bar-mode -1)))
-
-(mouse-wheel-mode t)
+      (scroll-bar-mode -1)
+      (menu-bar-mode 0)))
 
 (setq indent-tabs-mode nil)
 
