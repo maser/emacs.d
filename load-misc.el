@@ -151,3 +151,9 @@
 ;; coffee-mode
 (add-to-list 'load-path "~/.emacs.d/coffee-mode")
 (require 'coffee-mode)
+
+
+(if (and (daemonp) (locate-library "edit-server"))
+    (progn
+      (require 'edit-server)
+      (edit-server-start)))
