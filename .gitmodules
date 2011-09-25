@@ -1,21 +1,24 @@
 [submodule "rsense"]
-	path = rsense
+	path = vendor/rsense
 	url = http://cx4a.org/repo/rsense.git
 [submodule "auto-complete"]
-	path = auto-complete
+	path = vendor/auto-complete
 	url = http://cx4a.org/repo/auto-complete.git
 [submodule "rspec-mode"]
-	path = rspec-mode
+	path = vendor/rspec-mode
 	url = https://github.com/pezra/rspec-mode.git
 [submodule "yasnippets-rails"]
-	path = yasnippets-rails
+	path = vendor/yasnippets-rails
 	url = https://github.com/mknittig/yasnippets-rails.git
 [submodule "yasnippets-rspec"]
-	path = yasnippets-rspec
+	path = vendor/yasnippets-rspec
 	url = git://github.com/maser/yasnippets-rspec.git
 [submodule "magit"]
-	path = magit
+	path = vendor/magit
 	url = git://github.com/philjackson/magit.git
 [submodule "coffee-mode"]
-	path = coffee-mode
+	path = vendor/coffee-mode
 	url = git://github.com/defunkt/coffee-mode.git
+[submodule "vendor/cucumber.el"]
+	path = vendor/cucumber.el
+	url = https://github.com/michaelklishin/cucumber.el.git

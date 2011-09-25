@@ -5,3 +5,4 @@ tramp
 *.elc
 bookmarks
 ac-comphist.dat
+vendor/nxhtml/etc/schema/xhtml-loader.rnc*

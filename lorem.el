@@ -1,0 +1,1 @@
+(load-file "~/.emacs.d/vendor/lorem.el")

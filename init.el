@@ -1,22 +1,64 @@
-;; the following apt packages are installed:
-;; 
-;; - ecb
-;; - emacs-goodies-el
-;; - cedet-common
-;; - yaml-mode
+(defun load-conf (filename) 
+  "load the file in ~/.emacs.d/ unless it has already been loaded"
+  (defvar *maser-loaded-files* '())
+  (if (not (memq filename *maser-loaded-files*))
+      (progn
+	(load-file (expand-file-name (concat "~/.emacs.d/" filename ".el")))
+	(add-to-list '*maser-loaded-files* filename))))
+
+(add-to-list 'load-path "~/.emacs.d/vendor/")
+
+; basic
+(load-conf "basic-customization")
+(load-conf "maxframe")
+(load-conf "sml-modeline")
+(load-conf "redo")
+(load-conf "ido")
+(load-conf "dired-details")
+(load-conf "uniquify")
+(load-conf "theme")
+(load-conf "bookmarks")
+(load-conf "windmove")
+(load-conf "whitespace")
+(load-conf "hl-line")
+
+; general - text
+(load-conf "move-text")
+(load-conf "camelscore")
+(load-conf "autopair")
+(load-conf "rainbow-delimiters")
+(load-conf "lorem")
+(load-conf "auto-fill-mode")
+; (load-conf "viper")
+
+; general - other
+(load-conf "auto-complete")
+(load-conf "yasnippet")
+(load-conf "etags-table")
+(load-conf "my-ido-find-tag")
+(load-conf "find-file-in-project")
+
+(load-conf "flymake")
+(load-conf "org")
+(load-conf "deft")
+(load-conf "magit")
+(load-conf "edit-server")
+; (load-conf "cedet")
+; (load-conf "ecb")
 
 
-;; set these variables before loading this file to disable some features
-(if (not (boundp 'load-ecb))
-    (setq load-ecb t))
-(if (not (boundp 'load-cedet))
-    (setq load-cedet t))
-(if (not (boundp 'load-nxhtml))
-    (setq load-nxhtml t))
-(if (not (boundp 'load-zeitgeist))
-    (setq load-zeitgeist t))
 
-(load-file "~/.emacs.d/load-configuration.el")
-(load-file "~/.emacs.d/load-misc.el")
-(load-file "~/.emacs.d/load-ruby-and-rails.el")
-(load-file "~/.emacs.d/load-web.el")
+; language modes
+(load-conf "ruby-mode")
+(load-conf "rspec-mode")
+(load-conf "cc-mode")
+(load-conf "puppet-mode")
+(load-conf "coffee-mode")
+(load-conf "cucumber")
+(load-conf "css-mode")
+(load-conf "nxhtml")
+(load-conf "scss-mode")
+(load-conf "sass-mode")
+(load-conf "js2-mode")
+
+
