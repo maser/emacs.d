@@ -101,6 +101,14 @@
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (setq org-log-done t)
 
+;; http://jblevins.org/projects/deft/
+(when (require 'deft nil 'noerror) 
+  (setq
+   deft-extension "org"
+   deft-directory "~/org/deft/"
+   deft-text-mode 'org-mode)
+  (global-set-key (kbd "<f9>") 'deft))
+
 ;; etags-table
 (require 'etags-table)
 (setq etags-table-search-up-depth 100)
