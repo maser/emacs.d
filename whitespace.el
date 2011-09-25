@@ -1,3 +1,3 @@
 (require 'whitespace)
-(setq whitespace-style '(trailing face tabs empty lines-tail))
+(setq whitespace-style '(trailing face tabs lines-tail))
 (global-whitespace-mode)
