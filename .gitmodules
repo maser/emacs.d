@@ -22,3 +22,6 @@
 [submodule "vendor/cucumber.el"]
 	path = vendor/cucumber.el
 	url = https://github.com/michaelklishin/cucumber.el.git
+[submodule "vendor/evil"]
+	path = vendor/evil
+	url = git://gitorious.org/evil/evil.git

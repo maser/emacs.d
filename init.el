@@ -30,6 +30,7 @@
 (load-conf "lorem")
 (load-conf "auto-fill-mode")
 ; (load-conf "viper")
+(load-conf "evil")
 
 ; general - other
 (load-conf "auto-complete")
