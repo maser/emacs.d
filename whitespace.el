@@ -1,5 +1,3 @@
 (require 'whitespace)
-(setq whitespace-style 'trailing)
-(setq whitespace-trailing-regexp
-  "\\b.*\\(\\(\t\\| \\|\xA0\\|\x8A0\\|\x920\\|\xE20\\|\xF20\\)+\\)$")
+(setq whitespace-style '(trailing face tabs empty lines-tail))
 (global-whitespace-mode)
