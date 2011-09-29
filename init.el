@@ -27,7 +27,7 @@
 (load-conf "camelscore")
 (load-conf "autopair")
 (load-conf "rainbow-delimiters")
-(load-conf "lorem")
+(load-conf "lorem-ipsum")
 (load-conf "auto-fill-mode")
 ; (load-conf "viper")
 (load-conf "evil")
