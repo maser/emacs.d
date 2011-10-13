@@ -13,7 +13,7 @@
 (load-conf "maxframe")
 (load-conf "sml-modeline")
 (load-conf "redo")
-(load-conf "ido")
+(load-conf "ido-mode")
 (load-conf "dired-details")
 (load-conf "uniquify")
 (load-conf "theme")
