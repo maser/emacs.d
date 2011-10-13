@@ -1,4 +1,4 @@
-(load-conf "ido-mode")
+(load-conf "ido")
 
 ;; ido search for tags
 (load-file "~/.emacs.d/vendor/my-ido-find-tag.el")
