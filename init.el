@@ -11,6 +11,7 @@
 ; basic
 (load-conf "basic-customization")
 (load-conf "customizations")
+(load-conf "browser")
 (load-conf "maxframe")
 (load-conf "sml-modeline")
 (load-conf "redo")
