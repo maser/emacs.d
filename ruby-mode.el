@@ -58,4 +58,4 @@
 (add-to-list 'load-path (concat rsense-home "/etc"))
 (require 'rsense)
 
-(load-file "~/.emacs.d/vendor/yasnippets-rails/setup.el")
+(yas/load-directory "~/.emacs.d/vendor/yasnippets-rails/rails-snippets")
