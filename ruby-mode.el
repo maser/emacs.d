@@ -1,6 +1,7 @@
 (load-conf "nxhtml")
 (load-conf "yasnippet")
 (load-conf "flymake")
+(load-conf "rvm")
 
 ;; ruby-mode
 (require 'ruby-mode)
@@ -19,7 +20,7 @@
   (interactive)
   (condition-case err
       (newline-and-indent)
-    (error 
+    (error
      (message "%s" (error-message-string err))))
   )
 

@@ -25,3 +25,6 @@
 [submodule "vendor/evil"]
 	path = vendor/evil
 	url = git://gitorious.org/evil/evil.git
+[submodule "vendor/rvm.el"]
+	path = vendor/rvm.el
+	url = https://github.com/senny/rvm.el.git
