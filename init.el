@@ -1,4 +1,4 @@
-(defun load-conf (filename) 
+(defun load-conf (filename)
   "load the file in ~/.emacs.d/ unless it has already been loaded"
   (defvar *maser-loaded-files* '())
   (if (not (memq filename *maser-loaded-files*))
@@ -10,6 +10,7 @@
 
 ; basic
 (load-conf "basic-customization")
+(load-conf "customizations")
 (load-conf "maxframe")
 (load-conf "sml-modeline")
 (load-conf "redo")
