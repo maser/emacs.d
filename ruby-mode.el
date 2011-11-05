@@ -60,3 +60,14 @@
 (require 'rsense)
 
 (yas/load-directory "~/.emacs.d/vendor/yasnippets-rails/rails-snippets")
+
+;; hideshow (folding)
+(require 'hideshow-org)
+(add-to-list 'hs-special-modes-alist
+             '(ruby-mode
+               "\\(def\\|do\\|class\\|module\\|{\\)" "\\(end\\|end\\|}\\)" "#"
+               (lambda (arg) (ruby-end-of-block)) nil))
+
+(setq hs-org/trigger-keys-block (list (kbd "<C-tab>")))
+(setq hs-org/trigger-keys-all (list (kbd "<C-S-tab>") (kbd "<C-S-iso-lefttab>")))
+(add-hook 'ruby-mode-hook 'hs-org/minor-mode)
