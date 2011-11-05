@@ -45,7 +45,6 @@
 (load-conf "deft")
 (load-conf "magit")
 (load-conf "edit-server")
-; (load-conf "cedet")
 ; (load-conf "ecb")
 
 
