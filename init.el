@@ -47,8 +47,6 @@
 (load-conf "edit-server")
 ; (load-conf "ecb")
 
-
-
 ; language modes
 (load-conf "ruby-mode")
 (load-conf "rspec-mode")
@@ -61,5 +59,3 @@
 (load-conf "scss-mode")
 (load-conf "sass-mode")
 (load-conf "js2-mode")
-
-
