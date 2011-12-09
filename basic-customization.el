@@ -55,8 +55,6 @@
 ;; delete-selection-mode
 (delete-selection-mode)
 
-(setq visible-bell t)
-
 ;; Make sure all backup files only live in one place
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
