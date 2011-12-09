@@ -28,3 +28,15 @@
 [submodule "vendor/rvm.el"]
 	path = vendor/rvm.el
 	url = https://github.com/senny/rvm.el.git
+[submodule "vendor/clojure-mode"]
+	path = vendor/clojure-mode
+	url = https://github.com/technomancy/clojure-mode.git
+[submodule "vendor/swank-clojure"]
+	path = vendor/swank-clojure
+	url = https://github.com/technomancy/swank-clojure.git
+[submodule "vendor/slime"]
+	path = vendor/slime
+	url = git://git.boinkor.net/slime.git
+[submodule "vendor/mark-multiple"]
+	path = vendor/mark-multiple
+	url = https://github.com/magnars/mark-multiple.el.git

@@ -33,6 +33,7 @@
 (load-conf "auto-fill-mode")
 ; (load-conf "viper")
 (load-conf "evil")
+(load-conf "mark-multiple")
 
 ; general - other
 (load-conf "auto-complete")
