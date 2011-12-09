@@ -23,6 +23,7 @@
 (load-conf "windmove")
 (load-conf "whitespace")
 (load-conf "hl-line")
+(load-conf "maser")
 
 ; general - text
 (load-conf "move-text")
