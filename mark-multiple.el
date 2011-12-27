@@ -7,4 +7,4 @@
 (global-set-key (kbd "M-)") 'mark-next-like-this)
 
 (require 'rename-sgml-tag)
-(define-key nxhtml-mode-map (kbd "C-c C-r") 'rename-sgml-tag)
+; (define-key nxhtml-mode-map (kbd "C-c C-r") 'rename-sgml-tag)
