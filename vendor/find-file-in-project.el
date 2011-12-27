@@ -67,8 +67,10 @@ the project root.")
 
 (defvar *find-file-in-project-mode-map*
   (let ((map (make-sparse-keymap)))
+    ; what the hell is comment-or-uncomment-region doing here?!
     (define-key map [(control c)(control /)] 'comment-or-uncomment-region)
-    (define-key map [(meta t)] 'find-file-in-project-goto-file)
+    (define-key map [(control x)(meta t)] 'find-file-in-project-goto-file)
+    (define-key map (kbd "C-x t") 'find-file-in-project-goto-file)
   map))
 
 (defvar *find-file-in-project-project-root* nil
