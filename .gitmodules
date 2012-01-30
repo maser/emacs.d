@@ -40,3 +40,6 @@
 [submodule "vendor/mark-multiple"]
 	path = vendor/mark-multiple
 	url = https://github.com/magnars/mark-multiple.el.git
+[submodule "vendor/expand-region.el"]
+	path = vendor/expand-region.el
+	url = https://github.com/magnars/expand-region.el.git

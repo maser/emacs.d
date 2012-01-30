@@ -35,6 +35,7 @@
 ; (load-conf "viper")
 (load-conf "evil")
 (load-conf "mark-multiple")
+(load-conf "expand-region")
 
 ; general - other
 (load-conf "auto-complete")
