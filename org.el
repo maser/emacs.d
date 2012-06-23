@@ -8,3 +8,6 @@
       '(("l" "lazy TODOs" todo nil
 	 ((org-agenda-skip-function
 	  '(org-agenda-skip-entry-if 'scheduled 'deadline 'timestamp))))))
+
+;; Fontify org-mode code blocks
+(setq org-src-fontify-natively t)
