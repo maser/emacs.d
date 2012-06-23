@@ -5,6 +5,3 @@
 (require 'mark-more-like-this)
 (global-set-key (kbd "M-(") 'mark-previous-like-this)
 (global-set-key (kbd "M-)") 'mark-next-like-this)
-
-(require 'rename-sgml-tag)
-; (define-key nxhtml-mode-map (kbd "C-c C-r") 'rename-sgml-tag)
