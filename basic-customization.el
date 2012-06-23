@@ -53,7 +53,7 @@
 (setq major-mode 'text-mode)
 
 ;; delete-selection-mode
-(delete-selection-mode)
+(delete-selection-mode 1)
 
 ;; Make sure all backup files only live in one place
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
@@ -64,3 +64,12 @@
 (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
+
+;; Show keystrokes in progress
+(setq echo-keystrokes 0.1)
+
+;; Real emacs knights don't use shift to mark things
+(setq shift-select-mode nil)
+
+;; Sentences do not need double spaces to end. Period.
+(set-default 'sentence-end-double-space nil)
