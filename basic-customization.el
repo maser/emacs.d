@@ -48,6 +48,9 @@
 (show-paren-mode t)
 (setq show-paren-style 'mixed)
 
+; make the parens matched by show-paren-mode really visible
+(set-face-background 'show-paren-match-face "#666")
+
 (setq default-directory "~/")
 
 (setq major-mode 'text-mode)
