@@ -8,7 +8,7 @@
  rng-nxml-auto-validate-flag nil
  nxml-degraded t)
 
-					; can't stand the default colors
+; can't stand the default colors
 (custom-set-faces
  '(mumamo-background-chunk-major ((t nil)))
  '(mumamo-background-chunk-submode1 ((t (:background "#222222"))))
