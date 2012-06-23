@@ -3,7 +3,7 @@
 
 (package-initialize)
 
-(setq maser-required-packages (list))
+(setq maser-required-packages (list 'magit))
 
 (dolist (package maser-required-packages)
   (when (not (package-installed-p package))

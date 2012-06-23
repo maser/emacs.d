@@ -13,9 +13,6 @@
 [submodule "yasnippets-rspec"]
 	path = vendor/yasnippets-rspec
 	url = git://github.com/maser/yasnippets-rspec.git
-[submodule "magit"]
-	path = vendor/magit
-	url = git://github.com/philjackson/magit.git
 [submodule "coffee-mode"]
 	path = vendor/coffee-mode
 	url = git://github.com/defunkt/coffee-mode.git
