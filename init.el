@@ -24,6 +24,7 @@
 (load-conf "whitespace")
 (load-conf "hl-line")
 (load-conf "maser")
+(load-conf "packages")
 (load-conf "electric-indent-mode")
 
 ; general - text
