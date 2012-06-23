@@ -10,6 +10,7 @@
 
 ; basic
 (load-conf "basic-customization")
+(load-conf "packages")
 (load-conf "customizations")
 (load-conf "browser")
 (load-conf "maxframe")
@@ -24,7 +25,6 @@
 (load-conf "whitespace")
 (load-conf "hl-line")
 (load-conf "maser")
-(load-conf "packages")
 (load-conf "electric-indent-mode")
 
 ; general - text

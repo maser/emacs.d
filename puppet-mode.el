@@ -1,1 +1,2 @@
-(load-file "~/.emacs.d/vendor/puppet-mode-init.el")
+;(autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests")
+;(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))

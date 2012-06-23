@@ -1,4 +1,3 @@
-(add-to-list 'load-path "~/.emacs.d/vendor/mark-multiple")
 (require 'inline-string-rectangle)
 (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
 

@@ -59,8 +59,6 @@
             (set (make-local-variable 'comment-auto-fill-only-comments) t)
             ))
 
-(load-file "~/.emacs.d/vendor/flymake-ruby.el")
-
 (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo-mode))
 (add-to-list 'auto-mode-alist '("\\.text\\.plain\\.erb\\'" . eruby-mumamo-mode))
 
