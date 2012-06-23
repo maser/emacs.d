@@ -43,3 +43,6 @@
 [submodule "vendor/expand-region.el"]
 	path = vendor/expand-region.el
 	url = https://github.com/magnars/expand-region.el.git
+[submodule "vendor/sauron"]
+	path = vendor/sauron
+	url = https://github.com/djcb/sauron.git
