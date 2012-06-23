@@ -48,6 +48,7 @@
 (load-conf "find-file-in-project")
 (load-conf "ace-jump-mode")
 (load-conf "smex")
+(load-conf "annoying-arrows-mode")
 
 (load-conf "flymake")
 (load-conf "org")
