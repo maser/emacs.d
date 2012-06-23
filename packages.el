@@ -28,7 +28,8 @@
 			       'undo-tree
 			       'zenburn-theme
 			       'yasnippet
-			       'flymake-ruby))
+			       'flymake-ruby
+			       'flymake-sass))
 
 (dolist (package maser-required-packages)
   (when (not (package-installed-p package))
