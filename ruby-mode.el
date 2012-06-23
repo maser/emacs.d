@@ -24,21 +24,29 @@
      (message "%s" (error-message-string err))))
   )
 
+(defun update-tags-file ()
+  (when (and (eq major-mode 'ruby-mode) buffer-file-name (not (string-match "\.erb$" buffer-file-name)))
+                                        ; make sure tags-file-name variable is set
+    (etags-table-build-table-list buffer-file-name)
+    (if tags-file-name
+        (let* ((file-to-update buffer-file-name)
+               (tags-file-to-update tags-file-name)
+               (output
+                (condition-case err
+                    (progn
+                      (with-output-to-string
+                        (with-current-buffer standard-output
+                          (message "hello")
+                          (message file-to-update)
+                          (message tags-file-to-update)
+                          (call-process "/home/maser/.bin/rtags" nil t nil "--quiet" "-a" "-f" tags-file-to-update file-to-update)
+                          (message "TAGS file updated"))))
+                  (error (message "%s" (error-message-string err))))))))))
+
 ;; ruby-mode-hook
 (add-hook 'ruby-mode-hook
           (lambda ()
-            (add-hook 'after-save-hook '(lambda ()
-                                          (when (and (eq major-mode 'ruby-mode) buffer-file-name (not (string-match "\.erb$" buffer-file-name)))
-                                            (if tags-file-name
-                                                (let* ((file-to-update buffer-file-name)
-                                                       (tags-file-to-update tags-file-name)
-                                                       (output (
-                                                                (condition-case err
-                                                                    (with-output-to-string
-                                                                      (with-current-buffer standard-output
-                                                                        (call-process "rtags" nil t nil "-a" "-f" tags-file-to-update file-to-update)))
-                                                                  (error (message "%s" (error-message-string err)))))))
-                                                  (message output))))))
+            (add-hook 'after-save-hook 'update-tags-file)
             (set (make-local-variable 'indent-tabs-mode) 'nil)
             (set (make-local-variable 'tab-width) 2)
             (local-set-key (kbd "<return>") 'my-newline-and-indent)
