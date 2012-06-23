@@ -49,6 +49,8 @@
             (add-hook 'after-save-hook 'update-tags-file)
             (set (make-local-variable 'indent-tabs-mode) 'nil)
             (set (make-local-variable 'tab-width) 2)
+            (when (not (and (eq major-mode 'ruby-mode) buffer-file-name (not (string-match "\.erb$" buffer-file-name))))
+              (set (make-local-variable 'ruby-insert-encoding-magic-comment) nil))
             (local-set-key (kbd "<return>") 'my-newline-and-indent)
             (add-to-list 'ac-sources 'ac-source-rsense-method)
             (add-to-list 'ac-sources 'ac-source-rsense-constant)
