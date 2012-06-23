@@ -37,6 +37,7 @@
 (load-conf "evil")
 (load-conf "mark-multiple")
 (load-conf "expand-region")
+(load-conf "toggle-quotes")
 
 ; general - other
 (load-conf "auto-complete")
