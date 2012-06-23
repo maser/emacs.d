@@ -1,10 +1,11 @@
 ; colors
-(if (string-match "GNU Emacs 24." (emacs-version))
-    (require 'zenburn-theme)
+(if (>= emacs-major-version 24)
+    (progn
+      (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+      (load-theme 'zenburn)
+      )
   (progn
     (require 'color-theme)
     (setq color-theme-is-global t)
     (require 'zenburn)
-    (color-theme-zenburn)
-    )
-)
+    (color-theme-zenburn)))
