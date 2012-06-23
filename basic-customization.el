@@ -73,3 +73,7 @@
 
 ;; Sentences do not need double spaces to end. Period.
 (set-default 'sentence-end-double-space nil)
+
+;; volatile-highlights
+(require 'volatile-highlights)
+(volatile-highlights-mode t)

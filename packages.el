@@ -32,6 +32,7 @@
 			       'csv-mode
 			       'ruby-end
 			       'smex
+			       'volatile-highlights
 			       'ido-ubiquitous
 			       'flymake-ruby
 			       'flymake-sass))
