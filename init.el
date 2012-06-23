@@ -47,6 +47,7 @@
 (load-conf "my-ido-find-tag")
 (load-conf "find-file-in-project")
 (load-conf "ace-jump-mode")
+(load-conf "smex")
 
 (load-conf "flymake")
 (load-conf "org")

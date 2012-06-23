@@ -28,6 +28,11 @@
 			       'undo-tree
 			       'zenburn-theme
 			       'yasnippet
+			       'crontab-mode
+			       'csv-mode
+			       'ruby-end
+			       'smex
+			       'ido-ubiquitous
 			       'flymake-ruby
 			       'flymake-sass))
 
