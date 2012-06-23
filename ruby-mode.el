@@ -70,3 +70,10 @@
 (require 'rsense)
 
 (yas/load-directory "~/.emacs.d/vendor/yasnippets-rails/rails-snippets")
+
+; automatically reindent after typing "end"
+(defun ruby-electric-indent-function (char)
+  (if (eq major-mode 'ruby-mode)
+      (if (char-equal char ?d)
+          (string-equal "end" (buffer-substring (max 1 (- (point) 3)) (point))))))
+(add-hook 'electric-indent-functions 'ruby-electric-indent-function)
