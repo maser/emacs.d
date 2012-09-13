@@ -37,6 +37,7 @@
 ; (load-conf "viper")
 (load-conf "evil")
 (load-conf "mark-multiple")
+(load-conf "multiple-cursors")
 (load-conf "expand-region")
 (load-conf "toggle-quotes")
 
