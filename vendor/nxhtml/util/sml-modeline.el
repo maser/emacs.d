@@ -159,6 +159,7 @@ This can be 'percentage or 'line-number."
      ;;(assert (= (length string) sml-modeline-len) t)
      (when (= start sml-modeline-len) (setq start (1- start)))
      (setq start (+ start (length sml-begin)))
+     (setq end   (+ end   (length sml-begin)))
      (when (= start end) (setq end (1+ end)))
      (when (= end pos-%) (setq end (1+ end))) ;; If on % add 1
      (put-text-property start end 'face 'sml-modeline-vis-face string)

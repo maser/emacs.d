@@ -19,8 +19,6 @@
 ;;  `html-toc-write-toc-file' and `html-toc-write-frames-file' for
 ;;  more info.
 ;;
-;;  To use this you can add (require 'html-toc) to your .emacs.
-;;
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -272,7 +270,7 @@ expanded/collapsed (if JavaScript is allowed)."
   :group 'html-toc)
 
 (defvar html-toc-frames-contents
-    "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>
+    "<?xml version=\"1.0\" encoding=\"utf-8\"?>
 <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Frameset//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\">
 <html xmlns=\"http://www.w3.org/1999/xhtml\">
   <head>

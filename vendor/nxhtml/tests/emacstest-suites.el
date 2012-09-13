@@ -52,7 +52,7 @@
                         buffer-file-name))
          (this-dir (file-name-directory this-file))
          (load-path (cons this-dir load-path)))
-    (require 'ert2)))
+    (require 'ertn2)))
 
 (setq debug-on-error t)
 
@@ -81,20 +81,20 @@
   "Run Emacs tests."
   (interactive)
   (setq message-log-max t)
-  (setq ert-test-files-root emacstest-files-root)
+  (setq ertn-test-files-root emacstest-files-root)
   (let ((selector "emacs-"))
     (if noninteractive
-        (ert-run-tests-batch selector)
-      (ert-kill-temp-test-buffers)
-      (ert-run-tests-interactively selector)
+        (ertn-run-tests-batch selector)
+      (ertn-kill-temp-test-buffers)
+      (ertn-run-tests-interactively selector)
       (other-window 1)
-      (ert-list-temp-test-buffers))))
+      (ertn-list-temp-test-buffers))))
 
-(ert-deftest emacs-bug1013 ()
+(ertn-deftest emacs-bug1013 ()
   "Emacs bug 1013.
 See URL
 `http://emacsbugs.donarmstrong.com/cgi-bin/bugreport.cgi?bug=1013'."
-  (ert-with-temp-buffer-include-file "bug1013.el"
+  (ertn-with-temp-buffer-include-file "bug1013.el"
     (eval-buffer)))
 
 (provide 'emacstest-suites)

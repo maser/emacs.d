@@ -40,50 +40,29 @@
           "\\)\\b"))
 
 (defvar tt-font-lock-keywords
-   (list
-    ;; Fontify [& ... &] expressions
-    '("\\(\\[%[-+]?\\)\\(\\(.\\|\n\\)+?\\)\\([-+]?%\\]\\)"
-      (1 font-lock-string-face t)
-      (2 font-lock-variable-name-face t)
-      (4 font-lock-string-face t))
-    ;; Look for keywords within those expressions
-    ;;
-    ;; Comment out whole directive tag
-    '("\\[%\\(#.*?\\)%\\]"
-      (1 font-lock-comment-face t))
-    ;; Comments to end of line
-;;;     '("\\[%\\(?:.\\|\n\\)*\\(#.*\\)"
-;;;       (1 font-lock-comment-face t))
-    '("\\[% *\\([a-z_0-9]*\\) *%\\]"
-      (1 font-lock-constant-face t))
-    (list (concat
-	   "\\(\\[%[-+]?\\|;\\)[ \n\t]*\\("
-	   tt-keywords
-	   "\\)")
-	  2 font-lock-keyword-face t)
-    )
+  (list
+   ;; Fontify [& ... &] expressions
+   '("\\(\\[%[-+]?\\)\\(\\(.\\|\n\\)+?\\)\\([-+]?%\\]\\)"
+     (1 font-lock-string-face t)
+     (2 font-lock-variable-name-face t)
+     (4 font-lock-string-face t))
+   ;; Look for keywords within those expressions
+   ;;
+   ;; Comment out whole directive tag
+   '("\\[%\\(#.*?\\)%\\]"
+     (1 font-lock-comment-face t))
+   ;; Comments to end of line
+   ;; '("\\[%\\(?:.\\|\n\\)*\\(#.*\\)"
+   ;;   (1 font-lock-comment-face t))
+   '("\\[% *\\([a-z_0-9]*\\) *%\\]"
+     (1 font-lock-constant-face t))
+   (list (concat
+	  "\\(\\[%[-+]?\\|;\\)[ \n\t]*\\("
+	  tt-keywords
+	  "\\)")
+	 2 font-lock-keyword-face t)
+   )
   "Expressions to font-lock in tt-mode.")
-
-;; (defvar tt-font-lock-keywords
-;;   ;; Since this is used in a multi major mode we
-;;    (list
-;;     ;; Fontify [& ... &] expressions
-;; ;;;     '("^\\([-+]?\\)\\(\\(.\\|\n\\)+?\\)\\([-+]?\\)$"
-;; ;;;       (1 font-lock-string-face t)
-;; ;;;       (2 font-lock-variable-name-face t)
-;; ;;;       (4 font-lock-string-face t))
-;;     '("\\(#.*\\)$"
-;;       (1 font-lock-comment-face t))
-;;     '("^ *\\([a-z_0-9]*\\) *$"
-;;       (1 font-lock-constant-face t))
-;;     (list (concat
-;;            "^\\(?:[-+]?\\|;\\)[ \n\t]*\\("
-;;            tt-keywords
-;;            "\\)")
-;;            )
-;; 	  1 font-lock-keyword-face t)
-;;     )
-;;   "Expressions to font-lock in tt-mode.")
 
 (defvar tt-font-lock-defaults
   '(tt-font-lock-keywords nil t))
@@ -94,23 +73,18 @@
   (let* ((here (point))
          (beg-is-ml (get-text-property beg 'font-lock-multiline))
          tt-beg
-         tt-end
-         )
+         tt-end)
     (when beg-is-ml
       (let ((beg-ok (not (previous-single-property-change
                           here 'font-lock-multiline
-                          nil (- here 1))))
-            )
+                          nil (- here 1)))))
         (when beg-ok
           (goto-char beg)
-          (search-forward "%]" end t)
-          )
-            (search-forward "[%" end t)
-        ))
+          (search-forward "%]" end t))
+	(search-forward "[%" end t)))
     (when tt-end
       (remove-list-of-text-properties here tt-beg '(font-lock-multiline))
-      (set-text-properties tt-beg tt-end '(font-lock-multiline t))))
-  )
+      (set-text-properties tt-beg tt-end '(font-lock-multiline t)))))
 
 
 ;;;###autoload
