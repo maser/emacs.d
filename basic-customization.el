@@ -19,6 +19,7 @@
 
 
 (setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 ; Increase undo size
 (setq undo-limit 2000000)
