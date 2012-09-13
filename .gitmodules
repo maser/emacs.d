@@ -43,3 +43,6 @@
 [submodule "vendor/sauron"]
 	path = vendor/sauron
 	url = https://github.com/djcb/sauron.git
+[submodule "vendor/multiple-cursors.el"]
+	path = vendor/multiple-cursors.el
+	url = https://github.com/magnars/multiple-cursors.el.git
