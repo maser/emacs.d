@@ -71,3 +71,4 @@
 (load-conf "sass-mode")
 (load-conf "js2-mode")
 (load-conf "markdown-mode")
+(load-conf "yaml-mode")
