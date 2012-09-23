@@ -15,3 +15,7 @@
       (js2-highlight-vars-mode)))
 
 (add-hook 'js2-mode-hook 'my-js2-mode-hook)
+
+(require 'flymake-jshint)
+(add-hook 'js2-mode-hook 'flymake-mode)
+(setq jshint-configuration-path "~/.jshint.json")

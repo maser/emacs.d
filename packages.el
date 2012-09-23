@@ -15,6 +15,7 @@
 			       'flymake-cursor
 			       'haml-mode
 			       'js2-mode
+                               'flymake-jshint
 			       'mark-multiple
 			       'mark-more-like-this
 			       'maxframe
