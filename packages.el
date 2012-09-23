@@ -36,6 +36,7 @@
 			       'volatile-highlights
 			       'ido-ubiquitous
 			       'flymake-ruby
+                               'yaml-mode
 			       'flymake-sass))
 
 (dolist (package maser-required-packages)
