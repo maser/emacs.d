@@ -55,6 +55,7 @@
             (add-to-list 'ac-sources 'ac-source-rsense-method)
             (add-to-list 'ac-sources 'ac-source-rsense-constant)
             (flyspell-prog-mode)
+            (highlight-indentation-current-column-mode)
             ))
 
 (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-html-mumamo-mode))

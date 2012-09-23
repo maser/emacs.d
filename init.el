@@ -40,6 +40,7 @@
 (load-conf "multiple-cursors")
 (load-conf "expand-region")
 (load-conf "toggle-quotes")
+(load-conf "highlight-indentation")
 
 ; general - other
 (load-conf "auto-complete")
