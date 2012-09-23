@@ -1,45 +1,15 @@
-[submodule "rsense"]
+[submodule "vendor/rsense"]
 	path = vendor/rsense
 	url = https://github.com/m2ym/rsense.git
-[submodule "auto-complete"]
-	path = vendor/auto-complete
-	url = http://cx4a.org/repo/auto-complete.git
-[submodule "rspec-mode"]
-	path = vendor/rspec-mode
-	url = https://github.com/pezra/rspec-mode.git
-[submodule "yasnippets-rails"]
+[submodule "vendor/yasnippets-rails"]
 	path = vendor/yasnippets-rails
 	url = https://github.com/mknittig/yasnippets-rails.git
-[submodule "yasnippets-rspec"]
+[submodule "vendor/yasnippets-rspec"]
 	path = vendor/yasnippets-rspec
 	url = git://github.com/maser/yasnippets-rspec.git
-[submodule "coffee-mode"]
-	path = vendor/coffee-mode
-	url = git://github.com/defunkt/coffee-mode.git
-[submodule "vendor/cucumber.el"]
-	path = vendor/cucumber.el
-	url = https://github.com/michaelklishin/cucumber.el.git
 [submodule "vendor/evil"]
 	path = vendor/evil
 	url = git://gitorious.org/evil/evil.git
-[submodule "vendor/rvm.el"]
-	path = vendor/rvm.el
-	url = https://github.com/senny/rvm.el.git
-[submodule "vendor/clojure-mode"]
-	path = vendor/clojure-mode
-	url = https://github.com/technomancy/clojure-mode.git
-[submodule "vendor/swank-clojure"]
-	path = vendor/swank-clojure
-	url = https://github.com/technomancy/swank-clojure.git
-[submodule "vendor/slime"]
-	path = vendor/slime
-	url = git://git.boinkor.net/slime.git
-[submodule "vendor/mark-multiple"]
-	path = vendor/mark-multiple
-	url = https://github.com/magnars/mark-multiple.el.git
-[submodule "vendor/expand-region.el"]
-	path = vendor/expand-region.el
-	url = https://github.com/magnars/expand-region.el.git
 [submodule "vendor/sauron"]
 	path = vendor/sauron
 	url = https://github.com/djcb/sauron.git
