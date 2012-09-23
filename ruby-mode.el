@@ -1,7 +1,6 @@
 (load-conf "nxhtml")
 (load-conf "yasnippet")
 (load-conf "flymake")
-(load-conf "rvm")
 
 ;; ruby-mode
 (require 'ruby-mode)
