@@ -13,3 +13,6 @@
 [submodule "vendor/multiple-cursors.el"]
 	path = vendor/multiple-cursors.el
 	url = https://github.com/magnars/multiple-cursors.el.git
+[submodule "vendor/js2-refactor.el"]
+	path = vendor/js2-refactor.el
+	url = https://github.com/magnars/js2-refactor.el.git
