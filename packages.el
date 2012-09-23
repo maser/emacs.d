@@ -37,6 +37,7 @@
                                'ido-ubiquitous
                                'flymake-ruby
                                'yaml-mode
+                               'markdown-mode
                                'flymake-sass))
 
 (dolist (package maser-required-packages)
