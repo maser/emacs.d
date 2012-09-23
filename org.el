@@ -11,3 +11,11 @@
 
 ;; Fontify org-mode code blocks
 (setq org-src-fontify-natively t)
+
+(define-key global-map "\C-cc" 'org-capture)
+
+(setq maser/todo-file (concat org-directory "/todo.org"))
+
+(setq org-capture-templates
+      '(("t" "TODO" entry (file maser/todo-file)
+	 "* TODO %?\n  %i\n")))
