@@ -9,8 +9,8 @@
 (add-to-list 'load-path "~/.emacs.d/vendor/")
 
 ; basic
-(load-conf "basic-customization")
 (load-conf "packages")
+(load-conf "basic-customization")
 (load-conf "customizations")
 (load-conf "browser")
 (load-conf "maxframe")
