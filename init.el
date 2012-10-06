@@ -51,6 +51,7 @@
 (load-conf "expand-region")
 (load-conf "toggle-quotes")
 (load-conf "highlight-indentation")
+(load-conf "zencoding")
 
 ; general - other
 (load-conf "auto-complete")
