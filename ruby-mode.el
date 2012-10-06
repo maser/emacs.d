@@ -57,7 +57,9 @@
             (highlight-indentation-current-column-mode)
             ))
 
+; use html-mode, not nxhtml-mode for erb mumamo
 (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-html-mumamo-mode))
+; mumamo for .text.plain.erb files
 (add-to-list 'auto-mode-alist '("\\.text\\.plain\\.erb\\'" . eruby-mumamo-mode))
 
 ;; Rsense
