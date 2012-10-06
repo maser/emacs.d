@@ -6,6 +6,16 @@
 	(load-file (expand-file-name (concat "~/.emacs.d/" filename ".el")))
 	(add-to-list '*maser-loaded-files* filename))))
 
+;; This function replaces modes in some alist with another mode
+;;
+;; Some modes just insist on putting themselves into the
+;; auto-mode-alist, this function helps me get rid of them
+(defun replace-auto-mode (oldmode newmode)
+  (dolist (aitem auto-mode-alist)
+    (if (eq (cdr aitem) oldmode)
+	(setcdr aitem newmode))))
+
+
 (add-to-list 'load-path "~/.emacs.d/vendor/")
 
 ; basic

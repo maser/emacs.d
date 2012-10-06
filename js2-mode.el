@@ -1,13 +1,22 @@
-(add-to-list 'load-path "~/.emacs.d/vendor/js2-mode/build")
-(autoload 'js2-mode "js2-mode" nil t)
+(add-to-list 'load-path "~/.emacs.d/vendor/mooz-js2-mode")
+(require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (require 'js2-highlight-vars)
 
+
+(replace-auto-mode 'javascript-mode 'js2-mode)
+(replace-auto-mode 'js-mode 'js2-mode)
+
 ;; js2 configuration
-(setq js-indent-level 4)
 (setq js2-basic-offset 4)
 (setq js2-mode-indent-ignore-first-tab t)
-(setq c-basic-offset 4)
+(setq js2-highlight-external-variables nil)
+(setq js2-highlight-level 3)
+(setq js2-mirror-mode nil)
+(setq js2-mode-show-parse-errors nil)
+(setq js2-mode-show-strict-warnings nil)
+(setq js2-bounce-indent-p nil)
+(setq js2-pretty-multiline-declarations t)
 
 (defun my-js2-mode-hook ()
   (local-set-key (kbd "<return>") 'newline-and-indent)

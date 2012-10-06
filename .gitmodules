@@ -16,3 +16,6 @@
 [submodule "vendor/js2-refactor.el"]
 	path = vendor/js2-refactor.el
 	url = https://github.com/magnars/js2-refactor.el.git
+[submodule "vendor/mooz-js2-mode"]
+	path = vendor/mooz-js2-mode
+	url = https://github.com/mooz/js2-mode.git
