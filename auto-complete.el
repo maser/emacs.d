@@ -7,3 +7,11 @@
 (setq ac-auto-start 0)   ; start completion when entered 1 characters
 (setq ac-dwim 3)         ; Do what i mean
 (setq ac-trigger-key "TAB")
+
+(setq-default ac-sources '( ac-source-filename
+                            ac-source-files-in-current-dir
+                            ac-source-yasnippet
+                            ac-source-abbrev
+                            ac-source-words-in-same-mode-buffers
+                            ac-source-dictionary))
+
