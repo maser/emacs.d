@@ -9,3 +9,5 @@
   (add-to-list 'ac-sources 'ac-source-css-property))
 (add-hook 'sass-mode-hook 'configure-auto-complete-for-sass)
 (add-to-list 'ac-modes 'sass-mode)
+
+(add-hook 'sass-mode-hook 'rainbow-mode)

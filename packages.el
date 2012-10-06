@@ -28,6 +28,7 @@
                                'gist
                                'sass-mode
                                'scss-mode
+                               'rainbow-mode
                                'sml-modeline
                                'undo-tree
                                'zenburn-theme
