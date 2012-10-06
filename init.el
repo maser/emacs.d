@@ -82,5 +82,6 @@
 (load-conf "scss-mode")
 (load-conf "sass-mode")
 (load-conf "js2-mode")
+(load-conf "js2-refactor")
 (load-conf "markdown-mode")
 (load-conf "yaml-mode")
