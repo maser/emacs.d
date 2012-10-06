@@ -75,3 +75,10 @@
       (if (char-equal char ?d)
           (string-equal "end" (buffer-substring (max 1 (- (point) 3)) (point))))))
 (add-hook 'electric-indent-functions 'ruby-electric-indent-function)
+
+
+;; do not complete end keyword
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (make-local-variable 'ac-stop-words)
+            (add-to-list 'ac-stop-words "end")))
