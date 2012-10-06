@@ -25,6 +25,7 @@
                                'rainbow-delimiters
                                'rspec-mode
                                'rvm
+                               'gist
                                'sass-mode
                                'scss-mode
                                'sml-modeline
