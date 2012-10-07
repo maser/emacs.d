@@ -24,7 +24,7 @@
 (load-conf "customizations")
 (load-conf "browser")
 (load-conf "maxframe")
-(load-conf "sml-modeline")
+(load-conf "powerline")
 (load-conf "redo")
 (load-conf "ido")
 (load-conf "dired-details")
