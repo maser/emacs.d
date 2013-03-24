@@ -1,5 +1,6 @@
 (require 'package)
 (setq package-archives '())
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
@@ -17,6 +18,7 @@
                                'ido-ubiquitous
                                'edit-server
                                'etags-table
+                               'melpa
                                
                                ; editing
                                'move-text
