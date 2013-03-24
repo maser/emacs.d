@@ -79,8 +79,6 @@
 (add-to-list 'auto-mode-alist '("\\.text\\.plain\\.erb\\'" . eruby-mumamo-mode))
 
 ;; Rsense
-(setq rsense-home (expand-file-name "~/.emacs.d/vendor/rsense"))
-(add-to-list 'load-path (concat rsense-home "/etc"))
 (require 'rsense)
 
 (yas/load-directory "~/.emacs.d/vendor/yasnippets-rails/rails-snippets")

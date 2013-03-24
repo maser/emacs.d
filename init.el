@@ -34,6 +34,8 @@
 (load-conf "hl-line")
 (load-conf "maser")
 (load-conf "electric-indent-mode")
+(load-conf "undo-tree")
+(load-conf "smooth-scroll")
 
 ; general - text
 (load-conf "move-text")

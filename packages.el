@@ -8,69 +8,67 @@
 (package-initialize)
 
 (setq maser-required-packages (list
-                               'magit
-                               'git-commit-mode
-                               'coffee-mode
-                               'feature-mode
-                               'deft
-                               'org
-                               'org-plus-contrib
-                               'dired-details
-                               'expand-region
-                               'flymake-cursor
-                               'haml-mode
-                               'flymake-jshint
-                               'mark-more-like-this
+                               ; generic
                                'maxframe
-                               'puppet-mode
+                               'dired-details
                                'rainbow-delimiters
-                               'rainbow-mode
-                               'redo+   ; TODO
-                               'rsense
-                               'rspec-mode
-                               'rvm
-                               'gist
-                               'sass-mode
-                               'scss-mode
-                               'rainbow-mode
-                               'sml-modeline
-                               'undo-tree ; TODO
                                'zenburn-theme
-                               'yasnippet
-                               'crontab-mode
-                               'csv-mode
-                               'ruby-end ; TODO
                                'smex
-                               'volatile-highlights
                                'ido-ubiquitous
-                               'flymake-ruby
-                               'yaml-mode
-                               'markdown-mode
-                               'ace-jump-mode
-                               'annoying-arrows-mode
-                               'auto-complete
-                               'autopair
-                               'clojure-mode
-                               'crontab-mode
-                               'csv-mode
                                'edit-server
                                'etags-table
+                               
+                               ; editing
+                               'move-text
                                'expand-region
+                               'multiple-cursors
+                               'autopair
+                               'auto-complete
+                               'ace-jump-mode
+                               'annoying-arrows-mode
+                               'volatile-highlights
+                               'rainbow-mode
+                               'undo-tree
+                               'flymake-cursor
+                               'yasnippet
+                               'highlight-indentation
+                               'smooth-scroll
+
+                               ; tools
+                               'magit
+                               'nrepl
+                               'org
+                               'org-plus-contrib
+                               'deft
                                'gist
+
+                               ; language tools
+                               'flymake-css
+                               'flymake-sass
+                               'flymake-ruby
+                               'flymake-jshint
+                               'zencoding-mode
+                               'js2-refactor
+                               'rsense
+
+                               ; language modes
+                               'coffee-mode
+                               'feature-mode
+                               'haml-mode
+                               'js2-mode
+                               'puppet-mode
+                               'rspec-mode
+                               'sass-mode
+                               'scss-mode
+                               'crontab-mode
+                               'csv-mode
+                               'yaml-mode
+                               'markdown-mode
+                               'clojure-mode
                                'git-commit-mode
                                'gitconfig-mode
                                'haml-mode
-                               'highlight-indentation
-                               'js2-mode
-                               'js2-refactor
-                               'move-text
-                               'multiple-cursors
-                               'nrepl
-                               'smooth-scroll
-                               'zencoding-mode
-                               'flymake-css
-                               'flymake-cursor
-                               'flymake-sass))
+                               ))
 
 (dolist (package maser-required-packages)
   (when (not (package-installed-p package))
