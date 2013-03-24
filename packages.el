@@ -34,7 +34,6 @@
                                'flymake-cursor
                                'yasnippet
                                'highlight-indentation
-                               'smooth-scroll
 
                                ; tools
                                'magit
