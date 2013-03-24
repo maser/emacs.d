@@ -18,6 +18,7 @@
 
 (defun my-js2-mode-hook ()
   (local-set-key (kbd "<return>") 'newline-and-indent)
+  (local-set-key (kbd "C-c C-m u s") 'maser/insert-use-strict)
   (if (featurep 'js2-highlight-vars)
       (js2-highlight-vars-mode)))
 
@@ -26,3 +27,9 @@
 (require 'flymake-jshint)
 (add-hook 'js2-mode-hook 'flymake-mode)
 (setq jshint-configuration-path "~/.jshint.json")
+
+
+(defun maser/insert-use-strict ()
+  (interactive)
+  (insert "\"use strict\";")
+  (newline-and-indent))
