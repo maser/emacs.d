@@ -1,2 +1,0 @@
-(require 'powerline)
-(powerline-default)

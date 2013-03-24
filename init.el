@@ -24,8 +24,6 @@
 (load-conf "customizations")
 (load-conf "browser")
 (load-conf "maxframe")
-(load-conf "powerline")
-(load-conf "redo")
 (load-conf "ido")
 (load-conf "dired-details")
 (load-conf "uniquify")
@@ -41,12 +39,7 @@
 (load-conf "move-text")
 (load-conf "camelscore")
 (load-conf "autopair")
-; (load-conf "rainbow-delimiters")
 (load-conf "lorem-ipsum")
-; (load-conf "auto-fill-mode")
-; (load-conf "viper")
-(load-conf "evil")
-(load-conf "mark-multiple")
 (load-conf "multiple-cursors")
 (load-conf "expand-region")
 (load-conf "toggle-quotes")
@@ -68,7 +61,6 @@
 (load-conf "deft")
 (load-conf "magit")
 (load-conf "edit-server")
-; (load-conf "ecb")
 
 ; language modes
 (load-conf "ruby-mode")
@@ -85,3 +77,5 @@
 (load-conf "js2-refactor")
 (load-conf "markdown-mode")
 (load-conf "yaml-mode")
+
+

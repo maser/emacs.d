@@ -1,8 +1,6 @@
-(add-to-list 'load-path "~/.emacs.d/vendor/mooz-js2-mode")
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (require 'js2-highlight-vars)
-
 
 (replace-auto-mode 'javascript-mode 'js2-mode)
 (replace-auto-mode 'js-mode 'js2-mode)

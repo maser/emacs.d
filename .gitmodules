@@ -1,21 +1,6 @@
-[submodule "vendor/rsense"]
-	path = vendor/rsense
-	url = https://github.com/m2ym/rsense.git
 [submodule "vendor/yasnippets-rails"]
 	path = vendor/yasnippets-rails
 	url = https://github.com/mknittig/yasnippets-rails.git
 [submodule "vendor/yasnippets-rspec"]
 	path = vendor/yasnippets-rspec
 	url = git://github.com/maser/yasnippets-rspec.git
-[submodule "vendor/evil"]
-	path = vendor/evil
-	url = git://gitorious.org/evil/evil.git
-[submodule "vendor/multiple-cursors.el"]
-	path = vendor/multiple-cursors.el
-	url = https://github.com/magnars/multiple-cursors.el.git
-[submodule "vendor/js2-refactor.el"]
-	path = vendor/js2-refactor.el
-	url = https://github.com/magnars/js2-refactor.el.git
-[submodule "vendor/mooz-js2-mode"]
-	path = vendor/mooz-js2-mode
-	url = https://github.com/mooz/js2-mode.git
