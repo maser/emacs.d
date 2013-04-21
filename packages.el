@@ -16,6 +16,7 @@
                                'zenburn-theme
                                'smex
                                'ido-ubiquitous
+                               'ido-vertical-mode
                                'edit-server
                                'etags-table
                                'melpa

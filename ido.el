@@ -22,9 +22,5 @@
 (define-key ido-file-completion-map (kbd "C-w") 'ido-delete-backward-updir)
 (define-key ido-file-completion-map (kbd "C-x C-w") 'ido-copy-current-file-name)
 
-;; Display ido results vertically, rather than horizontally
-(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
-(defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
-(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
-
 (ido-ubiquitous-mode 1)
+(ido-vertical-mode 1)
