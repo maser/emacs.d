@@ -8,3 +8,4 @@
 (global-set-key (kbd "C-c C-m a l b") 'maser-add-line-below)
 (global-set-key (kbd "C-c C-m a ; b") 'maser-add-semicolon-below)
 (global-set-key (kbd "C-c C-m a , b") 'maser-add-comma-below)
+(global-set-key (kbd "C-x C-s-f") 'djcb-find-file-as-root)
