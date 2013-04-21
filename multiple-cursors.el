@@ -13,7 +13,8 @@
 (let ((map-rename-sgml-tag (lambda ()
                              (local-set-key (kbd "C-c C-r") 'mc/mark-sgml-tag-pair))))
   (add-hook 'nxml-mode-hook map-rename-sgml-tag)
-  (add-hook 'eruby-html-mumamo-mode-hook map-rename-sgml-tag))
+  (add-hook 'eruby-html-mumamo-mode-hook map-rename-sgml-tag)
+  (add-hook 'html-mode-hook map-rename-sgml-tag))
 
 (global-unset-key (kbd "C-<down-mouse-1>"))
 (global-set-key (kbd "C-<mouse-1>") 'mc/add-cursor-on-click)
