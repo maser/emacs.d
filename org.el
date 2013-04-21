@@ -9,6 +9,11 @@
 	 ((org-agenda-skip-function
 	  '(org-agenda-skip-entry-if 'scheduled 'deadline 'timestamp))))))
 
+(add-hook 'org-mode-hook
+          (lambda ()
+            (set (make-local-variable 'electric-indent-functions)
+                 (list (lambda (arg) 'no-indent)))))
+
 ;; Fontify org-mode code blocks
 (setq org-src-fontify-natively t)
 
