@@ -96,3 +96,5 @@
           (lambda ()
             (make-local-variable 'ac-stop-words)
             (add-to-list 'ac-stop-words "end")))
+
+(add-hook 'ruby-mode-hook 'subword-mode)

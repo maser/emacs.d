@@ -33,3 +33,5 @@
   (interactive)
   (insert "\"use strict\";")
   (newline-and-indent))
+
+(add-hook 'js2-mode-hook 'subword-mode)
