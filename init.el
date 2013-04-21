@@ -62,6 +62,7 @@
 (load-conf "org")
 (load-conf "deft")
 (load-conf "magit")
+(load-conf "git")
 (load-conf "edit-server")
 
 ; language modes
