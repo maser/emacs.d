@@ -35,6 +35,7 @@
 (load-conf "maser")
 (load-conf "electric-indent-mode")
 (load-conf "undo-tree")
+(load-conf "git-gutter")
 
 ; general - text
 (load-conf "move-text")

@@ -34,6 +34,7 @@
                                'flymake-cursor
                                'yasnippet
                                'highlight-indentation
+                               'git-gutter-fringe
 
                                ; tools
                                'magit
