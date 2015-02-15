@@ -44,7 +44,7 @@
 (load-conf "zencoding")
 
 ; general - other
-(load-conf "yasnippet")
+; (load-conf "yasnippet")
 (load-conf "ace-jump-mode")
 (load-conf "smex")
 (load-conf "annoying-arrows-mode")

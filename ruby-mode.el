@@ -1,4 +1,4 @@
-(load-conf "yasnippet")
+;(load-conf "yasnippet")
 
 ;; ruby-mode
 (require 'ruby-mode)
@@ -48,7 +48,7 @@
             (highlight-indentation-current-column-mode)
             ))
 
-(yas/load-directory "~/.emacs.d/vendor/yasnippets-rails/rails-snippets")
+; (yas/load-directory "~/.emacs.d/vendor/yasnippets-rails/rails-snippets")
 
 ; automatically reindent after typing "end"
 (defun ruby-electric-indent-function (char)
