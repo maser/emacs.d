@@ -80,3 +80,30 @@
 ;; Use shell-like backspace C-h, rebind help to F1
 (define-key key-translation-map [?\C-h] [?\C-?])
 (global-set-key (kbd "<f1>") 'help-command)
+
+(defun comment-or-uncomment-line-or-region ()
+  "Comments or uncomments the current line or region."
+  (interactive)
+  (if (region-active-p)
+      (progn
+        (comment-or-uncomment-region (region-beginning) (region-end))
+        )
+    (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+    )
+  )
+(global-set-key (kbd "M-;") 'comment-or-uncomment-line-or-region)
+
+; window configuration history
+(winner-mode 1)
+
+; move buffers (using buffer-move package)
+(global-set-key (kbd "C-c M-P")     'buf-move-up)
+(global-set-key (kbd "C-c M-N")   'buf-move-down)
+(global-set-key (kbd "C-c M-B")   'buf-move-left)
+(global-set-key (kbd "C-c M-F")  'buf-move-right)
+
+;; use hippie-expand instead of dabbrev
+(global-set-key (kbd "M-/") 'hippie-expand)
+
+(add-hook 'prog-mode-hook (lambda ()
+                            (guru-mode +1)))

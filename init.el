@@ -33,22 +33,33 @@
 (load-conf "electric-indent-mode")
 (load-conf "undo-tree")
 (load-conf "git-gutter")
+(load-conf "git-messenger")
+(load-conf "smart-mode-line")
+(load-conf "prelude-snippets")
 
 ; general - text
 (load-conf "move-text")
+(load-conf "smartparens")
 (load-conf "lorem-ipsum")
 (load-conf "multiple-cursors")
 (load-conf "expand-region")
 (load-conf "toggle-quotes")
 (load-conf "highlight-indentation")
 (load-conf "zencoding")
+(load-conf "anzu")
+(load-conf "fic-mode")
 
 ; general - other
 ; (load-conf "yasnippet")
+(load-conf "company-mode")
+(load-conf "projectile")
 (load-conf "ace-jump-mode")
 (load-conf "smex")
 (load-conf "annoying-arrows-mode")
 
+(load-conf "flycheck")
+(load-conf "flycheck-typescript")
+(load-conf "flycheck-flow")
 (load-conf "org")
 (load-conf "deft")
 (load-conf "magit")
@@ -69,5 +80,6 @@
 (load-conf "js2-refactor")
 (load-conf "markdown-mode")
 (load-conf "yaml-mode")
-
-
+(load-conf "scala")
+(load-conf "typescript")
+(load-conf "haskell")

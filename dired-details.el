@@ -11,3 +11,5 @@
   (backward-char (- (current-column) 2)))
 
 (define-key dired-mode-map (kbd "C-a") 'dired-back-to-start-of-files)
+
+(require 'dired-x)

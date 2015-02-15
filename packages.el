@@ -15,6 +15,7 @@
                                'smex
                                'ido-ubiquitous
                                'ido-vertical-mode
+                               'flx-ido
                                'edit-server
                                'melpa
 
@@ -30,6 +31,8 @@
                                'yasnippet
                                'highlight-indentation
                                'git-gutter-fringe
+                               'anzu
+                               'fic-mode
 
                                ; tools
                                'magit
@@ -37,8 +40,10 @@
                                'org-plus-contrib
                                'deft
                                'gist
+                               'projectile
 
                                ; language tools
+                               'flycheck
                                'zencoding-mode
                                'js2-refactor
 

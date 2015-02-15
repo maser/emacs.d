@@ -7,3 +7,14 @@ bookmarks
 ac-comphist.dat
 vendor/nxhtml/etc/schema/xhtml-loader.rnc*
 elpa
+var
+url
+projectile.cache
+projectile-bookmarks.eld
+menu_log.notes
+customizations.el
+abbrev_defs
+.org-id-locations
+.mc-lists.el
+.emacs.desktop.lock
+org-clock-save.el
