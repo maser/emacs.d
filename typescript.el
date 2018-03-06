@@ -1,2 +1,5 @@
 (require 'typescript)
 (add-to-list 'auto-mode-alist '("\\.ts$" . typescript-mode))
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+(flycheck-add-mode 'typescript-tslint 'web-mode)

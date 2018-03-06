@@ -1,11 +1,13 @@
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.es6$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.amd$" . js2-mode))
 
 (replace-auto-mode 'javascript-mode 'js2-mode)
 (replace-auto-mode 'js-mode 'js2-mode)
 
 ;; js2 configuration
-(setq js2-basic-offset 4)
+(setq js2-basic-offset 2)
 (setq js2-mode-indent-ignore-first-tab t)
 (setq js2-highlight-external-variables nil)
 (setq js2-highlight-level 3)
@@ -27,3 +29,7 @@
   (newline-and-indent))
 
 (add-hook 'js2-mode-hook 'subword-mode)
+
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
