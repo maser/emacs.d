@@ -22,7 +22,7 @@
                                'move-text
                                'expand-region
                                'multiple-cursors
-                               'ace-jump-mode
+                               'avy
                                'annoying-arrows-mode
                                'volatile-highlights
                                'rainbow-mode

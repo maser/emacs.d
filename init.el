@@ -51,7 +51,7 @@
 ; (load-conf "yasnippet")
 (load-conf "company-mode")
 (load-conf "projectile")
-(load-conf "ace-jump-mode")
+(load-conf "avy")
 (load-conf "smex")
 (load-conf "annoying-arrows-mode")
 
