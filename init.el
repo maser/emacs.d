@@ -79,3 +79,5 @@
 (load-conf "scala")
 (load-conf "typescript")
 (load-conf "haskell")
+(load-conf "rust")
+(load-conf "octave")
