@@ -36,6 +36,7 @@
 (load-conf "git-messenger")
 (load-conf "smart-mode-line")
 (load-conf "prelude-snippets")
+;; (load-conf "evil")
 
 ; general - text
 (load-conf "smartparens")
