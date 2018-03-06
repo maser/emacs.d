@@ -1,6 +1,8 @@
 (load-conf "org")
 
-;; http://jblevins.org/projects/deft/
+(use-package deft
+  :ensure t)
+
 (when (require 'deft nil 'noerror) 
   (setq
    deft-extension "org"

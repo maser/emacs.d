@@ -4,6 +4,8 @@
 (setq dired-dwim-target t)
 
 ;; dired-details
+(use-package dired-details
+  :ensure t)
 (require 'dired-details)
 (setq dired-details-hidden-string "--- ")
 (dired-details-install)

@@ -22,8 +22,14 @@
 (define-key ido-file-completion-map (kbd "C-w") 'ido-delete-backward-updir)
 (define-key ido-file-completion-map (kbd "C-x C-w") 'ido-copy-current-file-name)
 
+(use-package ido-ubiquitous
+  :ensure t)
 (ido-ubiquitous-mode 1)
+(use-package ido-vertical-mode
+  :ensure t)
 (ido-vertical-mode 1)
+(use-package flx-ido
+  :ensure t)
 (require 'flx-ido)
 (flx-ido-mode 1)
 (setq ido-use-faces nil)

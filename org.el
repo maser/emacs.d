@@ -1,4 +1,5 @@
-;; org-mode
+(use-package org
+  :ensure t)
 (require 'org-install)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (add-hook 'org-mode-hook 'flyspell-mode)

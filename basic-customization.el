@@ -74,6 +74,8 @@
 (set-default 'sentence-end-double-space nil)
 
 ;; volatile-highlights
+(use-package volatile-highlights
+  :ensure t)
 (require 'volatile-highlights)
 (volatile-highlights-mode t)
 
@@ -105,3 +107,11 @@
 (add-hook 'prog-mode-hook (lambda ()
                             (guru-mode +1)))
 
+(use-package beacon
+  :ensure t)
+(use-package crontab-mode
+  :ensure t)
+(use-package csv-mode
+  :ensure t)
+(use-package gitconfig-mode
+  :ensure t)

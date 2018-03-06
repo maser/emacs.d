@@ -1,7 +1,11 @@
+(use-package avy
+  :ensure t)
 (setq avy-all-windows nil)
 (setq avy-background t)
 (avy-setup-default)
 
+(use-package key-chord
+  :ensure t)
 (require 'key-chord)
 (key-chord-mode +1)
 (key-chord-define-global "jj" 'avy-goto-word-1)

@@ -9,65 +9,7 @@
 
 (package-initialize)
 
-(setq maser-required-packages (list
-                               ; generic
-                               'dired-details
-                               'zenburn-theme
-                               'smex
-                               'ido-ubiquitous
-                               'ido-vertical-mode
-                               'flx-ido
-                               'melpa
-                               'ivy
-                               'swiper
-                               'use-package
-
-                               ; editing
-                               'move-text
-                               'expand-region
-                               'multiple-cursors
-                               'avy
-                               'annoying-arrows-mode
-                               'volatile-highlights
-                               'rainbow-mode
-                               'undo-tree
-                               'yasnippet
-                               'highlight-indentation
-                               'git-gutter-fringe
-                               'anzu
-                               'fic-mode
-                               'beacon
-
-                               ; tools
-                               'magit
-                               'org
-                               'org-plus-contrib
-                               'deft
-                               'gist
-                               'projectile
-
-                               ; language tools
-                               'flycheck
-                               'js2-refactor
-
-                               ; language modes
-                               'coffee-mode
-                               'feature-mode
-                               'haml-mode
-                               'js2-mode
-                               'puppet-mode
-                               'rspec-mode
-                               'sass-mode
-                               'scss-mode
-                               'crontab-mode
-                               'csv-mode
-                               'yaml-mode
-                               'markdown-mode
-                               'gitconfig-mode
-                               'haml-mode
-                               ))
-
-(dolist (package maser-required-packages)
-  (when (not (package-installed-p package))
-    (package-refresh-contents)
-    (package-install package)))
+; install use-package
+(when (not (package-installed-p 'use-package))
+  (package-refresh-contents)
+  (package-install 'use-package))
