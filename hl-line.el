@@ -1,2 +1,2 @@
 ;; hl-line
-(hl-line-mode)
+(global-hl-line-mode)
