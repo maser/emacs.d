@@ -36,6 +36,7 @@
                                'git-gutter-fringe
                                'anzu
                                'fic-mode
+                               'beacon
 
                                ; tools
                                'magit
