@@ -16,7 +16,6 @@
                                'ido-ubiquitous
                                'ido-vertical-mode
                                'flx-ido
-                               'edit-server
                                'melpa
 
                                ; editing
@@ -44,7 +43,6 @@
 
                                ; language tools
                                'flycheck
-                               'zencoding-mode
                                'js2-refactor
 
                                ; language modes
@@ -60,7 +58,6 @@
                                'csv-mode
                                'yaml-mode
                                'markdown-mode
-                               'git-commit-mode
                                'gitconfig-mode
                                'haml-mode
                                ))

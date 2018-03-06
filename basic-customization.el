@@ -102,8 +102,6 @@
 (global-set-key (kbd "C-c M-B")   'buf-move-left)
 (global-set-key (kbd "C-c M-F")  'buf-move-right)
 
-;; use hippie-expand instead of dabbrev
-(global-set-key (kbd "M-/") 'hippie-expand)
-
 (add-hook 'prog-mode-hook (lambda ()
                             (guru-mode +1)))
+

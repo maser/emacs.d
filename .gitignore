@@ -18,3 +18,10 @@ abbrev_defs
 .mc-lists.el
 .emacs.desktop.lock
 org-clock-save.el
+session.*
+smex-items
+recentf
+network-security.data
+ido.last
+history
+ensime

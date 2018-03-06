@@ -3,8 +3,8 @@
   (defvar *maser-loaded-files* '())
   (if (not (memq filename *maser-loaded-files*))
       (progn
-	(load-file (expand-file-name (concat "~/.emacs.d/" filename ".el")))
-	(add-to-list '*maser-loaded-files* filename))))
+        (load-file (expand-file-name (concat "~/.emacs.d/" filename ".el")))
+        (add-to-list '*maser-loaded-files* filename))))
 
 ;; This function replaces modes in some alist with another mode
 ;;
@@ -13,7 +13,7 @@
 (defun replace-auto-mode (oldmode newmode)
   (dolist (aitem auto-mode-alist)
     (if (eq (cdr aitem) oldmode)
-	(setcdr aitem newmode))))
+        (setcdr aitem newmode))))
 
 
 (add-to-list 'load-path "~/.emacs.d/vendor/")
@@ -38,14 +38,12 @@
 (load-conf "prelude-snippets")
 
 ; general - text
-(load-conf "move-text")
 (load-conf "smartparens")
 (load-conf "lorem-ipsum")
 (load-conf "multiple-cursors")
 (load-conf "expand-region")
 (load-conf "toggle-quotes")
 (load-conf "highlight-indentation")
-(load-conf "zencoding")
 (load-conf "anzu")
 (load-conf "fic-mode")
 
@@ -59,12 +57,10 @@
 
 (load-conf "flycheck")
 (load-conf "flycheck-typescript")
-(load-conf "flycheck-flow")
 (load-conf "org")
 (load-conf "deft")
 (load-conf "magit")
 (load-conf "git")
-(load-conf "edit-server")
 
 ; language modes
 (load-conf "ruby-mode")
