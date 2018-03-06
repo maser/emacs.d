@@ -2,3 +2,4 @@
 (require 'magit)
 (require 'magit-gitflow)
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+(setq magit-completing-read-function 'ivy-completing-read)

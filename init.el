@@ -23,7 +23,7 @@
 (load-conf "basic-customization")
 (load-conf "customizations")
 (load-conf "browser")
-(load-conf "ido")
+;; (load-conf "ido")
 (load-conf "dired")
 (load-conf "uniquify")
 (load-conf "windmove")
@@ -53,6 +53,7 @@
 (load-conf "company-mode")
 (load-conf "projectile")
 (load-conf "avy")
+(load-conf "swiper")
 (load-conf "smex")
 (load-conf "annoying-arrows-mode")
 

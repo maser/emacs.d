@@ -18,6 +18,8 @@
                                'ido-vertical-mode
                                'flx-ido
                                'melpa
+                               'ivy
+                               'swiper
 
                                ; editing
                                'move-text
