@@ -24,7 +24,7 @@
 (load-conf "customizations")
 (load-conf "browser")
 (load-conf "ido")
-(load-conf "dired-details")
+(load-conf "dired")
 (load-conf "uniquify")
 (load-conf "windmove")
 (load-conf "whitespace")

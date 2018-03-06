@@ -1,5 +1,8 @@
 (require 'dired)
 
+;; Move files between split panes
+(setq dired-dwim-target t)
+
 ;; dired-details
 (require 'dired-details)
 (setq dired-details-hidden-string "--- ")
