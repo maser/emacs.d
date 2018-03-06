@@ -1,12 +1,19 @@
+;; Use the stable version of ensime
+(use-package ensime
+  :ensure t
+  :pin melpa-stable)
+
+(use-package sbt-mode
+  :pin melpa)
+
+(use-package scala-mode
+  :interpreter
+  ("scala" . scala-mode)
+  :pin melpa)
+
 ;; load the ensime lisp code...
 ;; (add-to-list 'load-path "~/.emacs.d/vendor/ensime/elisp/")
 (require 'ensime)
-(require 'scala-mode2)
-
-;; This step causes the ensime-mode to be started whenever
-;; scala-mode is started for a buffer. You may have to customize this step
-;; if you're not using the standard scala mode.
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 (define-key scala-mode-map (kbd "C-u M-.") 'ensime-edit-definition-other-window)
 
@@ -25,3 +32,6 @@
         (trait . (:foreground "#8cb0d3"))
         (object . (:foreground "#026DF7"))
         (package . font-lock-preprocessor-face)))
+
+(setq ensime-startup-notification nil)
+(setq ensime-startup-snapshot-notification nil)

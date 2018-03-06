@@ -20,6 +20,7 @@
                                'melpa
                                'ivy
                                'swiper
+                               'use-package
 
                                ; editing
                                'move-text
