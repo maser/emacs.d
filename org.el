@@ -37,3 +37,6 @@
 (setq org-agenda-archives-mode nil)
 (setq org-agenda-skip-comment-trees nil)
 (setq org-agenda-skip-function nil)
+
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
