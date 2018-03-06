@@ -12,7 +12,6 @@
      ; stop haskell-mode from enabling fucking flymake
      (setq flymake-allowed-file-name-masks (delete '("\\.l?hs\\'" haskell-flymake-init) flymake-allowed-file-name-masks))
 
-     (add-to-list 'company-backends '(company-ghc :with company-dabbrev))
      (setq company-ghc-show-info t)
      (setq company-ghc-show-module t)
      (add-hook 'haskell-mode-hook 'turn-on-haskell-unicode-input-method)
