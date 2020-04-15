@@ -10,7 +10,7 @@
 
 ;; Remove toolbar, scrollbar and menu bar
 (if (and (fboundp 'tool-bar-mode)
-	 (fboundp 'scroll-bar-mode)
+         (fboundp 'scroll-bar-mode)
          (fboundp 'menu-bar-mode))
     (progn
       (tool-bar-mode -1)
@@ -56,14 +56,6 @@
 ;; Make sure all backup files only live in one place
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
-;; dired
-(setq dired-listing-switches "-aohD")
-(setq dired-auto-revert-buffer t)
-
-(global-set-key "\C-w" 'backward-kill-word)
-(global-set-key "\C-x\C-k" 'kill-region)
-(global-set-key "\C-c\C-k" 'kill-region)
-
 ;; Show keystrokes in progress
 (setq echo-keystrokes 0.1)
 
@@ -79,10 +71,6 @@
 (require 'volatile-highlights)
 (volatile-highlights-mode t)
 
-;; Use shell-like backspace C-h, rebind help to F1
-(define-key key-translation-map [?\C-h] [?\C-?])
-(global-set-key (kbd "<f1>") 'help-command)
-
 (defun comment-or-uncomment-line-or-region ()
   "Comments or uncomments the current line or region."
   (interactive)
@@ -93,16 +81,9 @@
     (comment-or-uncomment-region (line-beginning-position) (line-end-position))
     )
   )
-(global-set-key (kbd "M-;") 'comment-or-uncomment-line-or-region)
 
 ; window configuration history
 (winner-mode 1)
-
-; move buffers (using buffer-move package)
-(global-set-key (kbd "C-c M-P")     'buf-move-up)
-(global-set-key (kbd "C-c M-N")   'buf-move-down)
-(global-set-key (kbd "C-c M-B")   'buf-move-left)
-(global-set-key (kbd "C-c M-F")  'buf-move-right)
 
 (add-hook 'prog-mode-hook (lambda ()
                             (guru-mode +1)))
