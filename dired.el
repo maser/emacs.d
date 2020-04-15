@@ -1,5 +1,8 @@
 (require 'dired)
 
+(setq dired-listing-switches "-aohD")
+(setq dired-auto-revert-buffer t)
+
 ;; Move files between split panes
 (setq dired-dwim-target t)
 
