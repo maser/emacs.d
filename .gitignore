@@ -25,3 +25,6 @@ network-security.data
 ido.last
 history
 ensime
+forge-database.sqlite
+games
+transient
