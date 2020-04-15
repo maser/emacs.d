@@ -1,7 +1,6 @@
-(load-conf "ruby-mode")
-
 (use-package rspec-mode
-  :ensure t)
-(require 'rspec-mode)
+  :ensure t
+  :after ruby-mode
+  :config
+  (require 'rspec-mode))
 
-; (yas/load-directory "~/.emacs.d/vendor/yasnippets-rspec/rspec-snippets")

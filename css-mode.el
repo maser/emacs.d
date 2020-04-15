@@ -5,5 +5,7 @@
 ))
 
 (use-package rainbow-mode
-  :ensure t)
-(add-hook 'css-mode-hook 'rainbow-mode)
+  :ensure t
+  :config
+  (add-hook 'css-mode-hook 'rainbow-mode))
+

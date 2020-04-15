@@ -1,7 +1,6 @@
 (use-package sass-mode
-  :ensure t)
-(require 'sass-mode)
-
-(use-package rainbow-mode
-  :ensure t)
-(add-hook 'sass-mode-hook 'rainbow-mode)
+  :ensure t
+  :after rainbow-mode
+  :config
+  (require 'sass-mode)
+  (add-hook 'sass-mode-hook 'rainbow-mode))

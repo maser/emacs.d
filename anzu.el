@@ -1,3 +1,5 @@
 (use-package anzu
-  :ensure t)
-(global-anzu-mode +1)
+  :ensure t
+  :config
+  (global-anzu-mode +1))
+

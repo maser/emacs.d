@@ -39,5 +39,11 @@
 (setq org-agenda-skip-comment-trees nil)
 (setq org-agenda-skip-function nil)
 
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(use-package org-bullets
+  :ensure t
+  :pin melpa-stable
+  :after org
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+
