@@ -7,8 +7,6 @@
 
 (setq package-archive-priorities '(("melpa-stable" . 1)))
 
-(package-initialize)
-
 ; install use-package
 (when (not (package-installed-p 'use-package))
   (package-refresh-contents)
